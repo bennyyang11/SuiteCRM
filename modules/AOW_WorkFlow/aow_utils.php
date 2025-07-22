@@ -642,8 +642,6 @@ function getModuleField(
     $parentfieldlist = [];
 
     if (isset($fieldlist[$fieldname]['type']) && $fieldlist[$fieldname]['type'] == 'currency' && $view != 'EditView') {
-        static $sfh;
-
         if (!isset($sfh)) {
             require_once('include/SugarFields/SugarFieldHandler.php');
             $sfh = new SugarFieldHandler();

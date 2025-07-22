@@ -145,6 +145,11 @@ if (!defined('SUGAR_PATH')) {
 }
 require_once 'include/SugarObjects/SugarRegistry.php';
 
+// Initialize Modern Authentication System
+if (file_exists(__DIR__ . '/Authentication/bootstrap.php')) {
+    require_once __DIR__ . '/Authentication/bootstrap.php';
+}
+
 if (empty($GLOBALS['installing'])) {
     ///////////////////////////////////////////////////////////////////////////////
     ////	SETTING DEFAULT VAR VALUES
