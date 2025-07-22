@@ -1,0 +1,245 @@
+/**
+ * Minimal Dashboard Theme Differentiation
+ * Safe styling that doesn't interfere with SuiteCRM functionality
+ */
+
+/* Base dashboard improvements */
+.dashboard {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+/* Enhanced tab styling */
+.nav-dashboard {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    margin: 0 1rem 1rem 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    border: none !important;
+}
+
+.nav-dashboard li {
+    margin: 0 0.25rem;
+}
+
+.nav-dashboard a {
+    border: none !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem !important;
+    text-decoration: none !important;
+    position: relative;
+}
+
+/* Default theme */
+.nav-dashboard .active a,
+.nav-dashboard li.active a {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Sales Dashboard Theme - Blue/Green */
+.nav-dashboard .active a[id*="sales" i],
+.nav-dashboard li.active a[id*="sales" i],
+.dashboard[data-theme="sales"] .nav-dashboard .active a {
+    background: linear-gradient(135deg, #2196F3, #4CAF50) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.dashboard[data-theme="sales"] {
+    background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e8 100%);
+}
+
+/* Marketing Dashboard Theme - Purple/Orange */
+.nav-dashboard .active a[id*="marketing" i],
+.nav-dashboard li.active a[id*="marketing" i],
+.dashboard[data-theme="marketing"] .nav-dashboard .active a {
+    background: linear-gradient(135deg, #9C27B0, #FF9800) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+.dashboard[data-theme="marketing"] {
+    background: linear-gradient(135deg, #f3e5f5 0%, #fff3e0 100%);
+}
+
+/* Activity Dashboard Theme - Teal/Cyan */
+.nav-dashboard .active a[id*="activity" i],
+.nav-dashboard .active a[id*="task" i],
+.nav-dashboard li.active a[id*="activity" i],
+.nav-dashboard li.active a[id*="task" i],
+.dashboard[data-theme="activity"] .nav-dashboard .active a {
+    background: linear-gradient(135deg, #009688, #00BCD4) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+}
+
+.dashboard[data-theme="activity"] {
+    background: linear-gradient(135deg, #e0f2f1 0%, #e0f7fa 100%);
+}
+
+/* Collaboration Dashboard Theme - Indigo/Pink */
+.nav-dashboard .active a[id*="collab" i],
+.nav-dashboard .active a[id*="team" i],
+.nav-dashboard li.active a[id*="collab" i],
+.nav-dashboard li.active a[id*="team" i],
+.dashboard[data-theme="collaboration"] .nav-dashboard .active a {
+    background: linear-gradient(135deg, #3F51B5, #E91E63) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3);
+}
+
+.dashboard[data-theme="collaboration"] {
+    background: linear-gradient(135deg, #e8eaf6 0%, #fce4ec 100%);
+}
+
+/* Enhanced dashlet styling */
+.dashletcontainer {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    margin: 1rem !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.dashletcontainer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dashletPanel .hd {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 1rem 1.5rem !important;
+}
+
+.dashletPanel .hd h3 {
+    color: white !important;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Theme-specific dashlet headers */
+.dashboard[data-theme="sales"] .dashletPanel .hd {
+    background: linear-gradient(135deg, #2196F3, #4CAF50) !important;
+}
+
+.dashboard[data-theme="marketing"] .dashletPanel .hd {
+    background: linear-gradient(135deg, #9C27B0, #FF9800) !important;
+}
+
+.dashboard[data-theme="activity"] .dashletPanel .hd {
+    background: linear-gradient(135deg, #009688, #00BCD4) !important;
+}
+
+.dashboard[data-theme="collaboration"] .dashletPanel .hd {
+    background: linear-gradient(135deg, #3F51B5, #E91E63) !important;
+}
+
+/* Add visual indicators for different dashboard types */
+.dashboard[data-theme="sales"]::before {
+    content: "💰 Sales Performance Dashboard";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #2196F3, #4CAF50);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard[data-theme="marketing"]::before {
+    content: "📢 Marketing Campaign Dashboard";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #9C27B0, #FF9800);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard[data-theme="activity"]::before {
+    content: "✅ Activity & Task Management";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #009688, #00BCD4);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard[data-theme="collaboration"]::before {
+    content: "👥 Team Collaboration Hub";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #3F51B5, #E91E63);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nav-dashboard {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+        padding: 0.25rem;
+    }
+    
+    .nav-dashboard a {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.9rem;
+    }
+    
+    .dashletcontainer {
+        margin: 0.5rem !important;
+    }
+    
+    .dashboard[data-theme]::before {
+        position: static;
+        display: block;
+        text-align: center;
+        margin: 0.5rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Hover effects for tabs */
+.nav-dashboard a:hover:not(.active) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    transform: translateY(-1px);
+}
+
+/* Smooth transitions */
+.dashboard,
+.dashletcontainer,
+.nav-dashboard a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

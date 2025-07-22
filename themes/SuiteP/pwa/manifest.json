@@ -1,0 +1,179 @@
+{
+  "name": "SuiteCRM - Modern CRM Platform",
+  "short_name": "SuiteCRM",
+  "description": "A comprehensive CRM solution with modern responsive interface",
+  "start_url": "/index.php",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "themes/SuiteP/pwa/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [
+    {
+      "src": "themes/SuiteP/pwa/screenshots/desktop-dashboard.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "SuiteCRM Dashboard - Desktop View"
+    },
+    {
+      "src": "themes/SuiteP/pwa/screenshots/mobile-dashboard.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "SuiteCRM Dashboard - Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Go to main dashboard",
+      "url": "/index.php?module=Home&action=index",
+      "icons": [
+        {
+          "src": "themes/SuiteP/pwa/icons/shortcut-dashboard.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "short_name": "Contacts",
+      "description": "Manage contacts",
+      "url": "/index.php?module=Contacts&action=index",
+      "icons": [
+        {
+          "src": "themes/SuiteP/pwa/icons/shortcut-contacts.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "short_name": "Accounts",
+      "description": "Manage accounts",
+      "url": "/index.php?module=Accounts&action=index",
+      "icons": [
+        {
+          "src": "themes/SuiteP/pwa/icons/shortcut-accounts.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Opportunities",
+      "short_name": "Opportunities",
+      "description": "Manage opportunities",
+      "url": "/index.php?module=Opportunities&action=index",
+      "icons": [
+        {
+          "src": "themes/SuiteP/pwa/icons/shortcut-opportunities.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/index.php?module=Contacts&action=EditView",
+    "method": "GET",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "website"
+    }
+  },
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.suitecrm.mobile"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/suitecrm/id123456789"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "scope": "/",
+  "id": "suitecrm-modern-crm",
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/index.php?module=Emails&action=ComposeView&to=%s"
+    },
+    {
+      "protocol": "tel",
+      "url": "/index.php?module=Calls&action=EditView&phone=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/index.php?module=Documents&action=upload",
+      "accept": {
+        "application/pdf": [".pdf"],
+        "application/msword": [".doc"],
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+        "application/vnd.ms-excel": [".xls"],
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
+        "text/csv": [".csv"],
+        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,499 @@
+/**
+ * Modern Responsive CSS Framework
+ * SuiteCRM Day 3: Mobile-Responsive Interface Implementation
+ */
+
+/* Progressive Web App Enhancements */
+.pwa-ready {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Enhanced Grid System */
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+@media (min-width: 576px) {
+    .responsive-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .responsive-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .responsive-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+}
+
+@media (min-width: 1200px) {
+    .responsive-grid {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+}
+
+/* Touch-Optimized Form Controls */
+.touch-form {
+    padding: 1rem;
+}
+
+.touch-form .form-control,
+.touch-form .form-select,
+.touch-form .btn {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.touch-form .form-control:focus,
+.touch-form .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+    transform: scale(1.02);
+}
+
+.touch-form .btn {
+    padding: 12px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.touch-form .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.touch-form .btn:active {
+    transform: translateY(0);
+}
+
+/* Enhanced Date/Time Pickers */
+.datetime-picker {
+    position: relative;
+}
+
+.datetime-picker input {
+    padding-right: 40px;
+}
+
+.datetime-picker .picker-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+}
+
+/* Swipe Gesture Support */
+.swipe-container {
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.swipe-item {
+    transition: transform 0.3s ease;
+}
+
+.swipe-item.swiping {
+    transition: none;
+}
+
+/* Mobile Navigation Enhancements */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0.5rem;
+}
+
+.mobile-nav .nav-item {
+    flex: 1;
+    text-align: center;
+}
+
+.mobile-nav .nav-link {
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: #6c757d;
+}
+
+.mobile-nav .nav-link.active {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+}
+
+.mobile-nav .nav-link i {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.mobile-nav .nav-link span {
+    font-size: 0.75rem;
+    display: block;
+}
+
+/* Responsive Tables */
+.responsive-table {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.responsive-table table {
+    min-width: 600px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .responsive-table table,
+    .responsive-table thead,
+    .responsive-table tbody,
+    .responsive-table th,
+    .responsive-table td,
+    .responsive-table tr {
+        display: block;
+    }
+
+    .responsive-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .responsive-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .responsive-table td {
+        border: none;
+        position: relative;
+        padding-left: 35% !important;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .responsive-table td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 0.5rem;
+        width: 30%;
+        font-weight: bold;
+        color: #333;
+    }
+}
+
+/* Lazy Loading Images */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+.lazy-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .auto-dark-mode {
+        background: #1a1a1a;
+        color: #ffffff;
+    }
+
+    .auto-dark-mode .card,
+    .auto-dark-mode .modal-content {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .auto-dark-mode .form-control,
+    .auto-dark-mode .form-select {
+        background: #2d2d2d;
+        color: #ffffff;
+        border-color: #404040;
+    }
+
+    .auto-dark-mode .text-muted {
+        color: #adb5bd !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .high-contrast {
+        filter: contrast(150%);
+    }
+
+    .high-contrast .btn {
+        border-width: 2px;
+    }
+
+    .high-contrast .form-control,
+    .high-contrast .form-select {
+        border-width: 2px;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .respect-motion-preference {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .respect-motion-preference * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .print-break-before {
+        page-break-before: always;
+    }
+
+    .print-break-after {
+        page-break-after: always;
+    }
+
+    .dashboard-header {
+        background: none !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    .modern-dashlet-container {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        break-inside: avoid;
+    }
+}
+
+/* Focus Management for Accessibility */
+.focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Responsive Typography */
+.responsive-text {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    line-height: 1.6;
+}
+
+.responsive-heading {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.2;
+}
+
+/* Container Queries (Future-proofing) */
+@container (min-width: 300px) {
+    .container-responsive {
+        padding: 1rem;
+    }
+}
+
+@container (min-width: 500px) {
+    .container-responsive {
+        padding: 2rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Enhanced Touch Targets */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gesture Feedback */
+.haptic-feedback:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+/* Loading States */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 2s infinite;
+    border-radius: 4px;
+}
+
+.loading-skeleton.text {
+    height: 1em;
+    margin: 0.5em 0;
+}
+
+.loading-skeleton.title {
+    height: 2em;
+    width: 60%;
+    margin: 1em 0;
+}
+
+.loading-skeleton.image {
+    height: 200px;
+    width: 100%;
+}
+
+/* Responsive Utilities */
+@media (max-width: 575.98px) {
+    .d-xs-none { display: none !important; }
+    .d-xs-block { display: block !important; }
+    .d-xs-flex { display: flex !important; }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .d-sm-only-none { display: none !important; }
+    .d-sm-only-block { display: block !important; }
+    .d-sm-only-flex { display: flex !important; }
+}
+
+/* Modern Scrollbar */
+.modern-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Enhanced Card Layouts */
+.modern-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modern-card-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modern-card-body {
+    padding: 1.5rem;
+}
+
+.modern-card-footer {
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

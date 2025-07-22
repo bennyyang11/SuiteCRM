@@ -1,0 +1,507 @@
+/**
+ * Text Contrast and Visibility Fixes
+ * Ensures all text is readable while maintaining color themes
+ */
+
+/* Force proper text colors for all elements */
+body, body * {
+    color: #2d3748 !important;
+}
+
+/* Dashboard and main content text */
+.dashboard,
+.dashboard * {
+    color: #2d3748 !important;
+}
+
+/* Dashlet content text fixes */
+.dashletPanel .bd,
+.dashletPanel .bd *,
+.dashletPanel .bd table,
+.dashletPanel .bd table *,
+.dashletPanel .bd p,
+.dashletPanel .bd div,
+.dashletPanel .bd span,
+.dashletPanel .bd a {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+/* Dashlet table specific fixes */
+.dashletPanel .list table th {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+}
+
+.dashletPanel .list table td {
+    background: white !important;
+    color: #2d3748 !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+}
+
+.dashletPanel .list table tr:hover td {
+    background: #f8f9ff !important;
+    color: #2d3748 !important;
+}
+
+/* Links in dashlets */
+.dashletPanel .list table a,
+.dashletPanel .bd a {
+    color: #0066cc !important;
+    text-decoration: none !important;
+}
+
+.dashletPanel .list table a:hover,
+.dashletPanel .bd a:hover {
+    color: #004499 !important;
+    text-decoration: underline !important;
+}
+
+/* Dashlet headers - keep white text on colored backgrounds */
+.dashletPanel .hd,
+.dashletPanel .hd h3,
+.dashletPanel .hd h3 *,
+.dashletPanel .hd a,
+.dashletPanel .hd span {
+    color: white !important;
+    background: transparent !important;
+}
+
+/* Sidebar text fixes - CRITICAL */
+.sidebar {
+    background: white !important;
+}
+
+.sidebar *,
+.sidebar-section,
+.sidebar-section *,
+.sidebar-section-header,
+.sidebar-section-header *,
+.sidebar-section-content,
+.sidebar-section-content *,
+.quick-actions,
+.quick-actions *,
+.recent-item,
+.recent-item *,
+.recent-item-title,
+.recent-item-meta,
+.favorite-item,
+.favorite-item *,
+.stats-grid,
+.stats-grid *,
+.stat-item,
+.stat-item *,
+.stat-label,
+.sidebar-empty-state,
+.sidebar-empty-state * {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+/* Sidebar headers - keep white text on colored backgrounds */
+.sidebar-header,
+.sidebar-header *,
+.sidebar-header h4,
+.sidebar-header .user-info {
+    color: white !important;
+}
+
+/* Quick action buttons - keep white text on colored backgrounds */
+.quick-action-btn,
+.quick-action-btn *,
+.quick-action-btn i {
+    color: white !important;
+    background: transparent !important;
+}
+
+/* Sidebar section headers - FORCE DARK TEXT */
+.sidebar-section-header,
+.sidebar-section-header *,
+.sidebar-section-header i,
+.sidebar-section-header .toggle-icon {
+    color: #2d3748 !important;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+}
+
+/* Navigation and tabs */
+.nav-dashboard,
+.nav-dashboard li,
+.nav-dashboard a {
+    color: #666 !important;
+}
+
+.nav-dashboard .active a,
+.nav-dashboard li.active a,
+.nav-dashboard .active a *,
+.nav-dashboard li.active a * {
+    color: white !important;
+}
+
+/* Form elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    color: #2d3748 !important;
+    background: white !important;
+}
+
+/* Buttons - maintain colored backgrounds with white text */
+.button,
+input[type="submit"],
+input[type="button"],
+.btn,
+.modern-btn {
+    color: white !important;
+}
+
+/* Tables throughout the application */
+table,
+table *,
+table th,
+table td,
+table tr {
+    color: #2d3748 !important;
+}
+
+table th {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+}
+
+table td {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+table tr:hover td {
+    background: #f8f9ff !important;
+    color: #2d3748 !important;
+}
+
+/* Modal content */
+.modal-content,
+.modal-content *,
+.modal-body,
+.modal-body * {
+    color: #2d3748 !important;
+}
+
+.modal-header,
+.modal-header *,
+.modal-title {
+    color: white !important;
+}
+
+/* Alert messages */
+.alert,
+.alert * {
+    color: inherit !important;
+}
+
+.alert-info,
+.alert-info * {
+    color: #0c5460 !important;
+}
+
+.alert-success,
+.alert-success * {
+    color: #155724 !important;
+}
+
+.alert-warning,
+.alert-warning * {
+    color: #856404 !important;
+}
+
+.alert-danger,
+.alert-danger * {
+    color: #721c24 !important;
+}
+
+/* Dropdown menus */
+.dropdown-menu,
+.dropdown-menu *,
+.dropdown-menu li,
+.dropdown-menu li a {
+    color: #495057 !important;
+    background: white !important;
+}
+
+.dropdown-menu li a:hover {
+    color: #667eea !important;
+    background: #f8f9ff !important;
+}
+
+/* Panel and card content */
+.panel,
+.panel *,
+.edit tr,
+.edit tr *,
+.view tr,
+.view tr * {
+    color: #2d3748 !important;
+}
+
+/* List views */
+.list,
+.list *,
+.list table,
+.list table * {
+    color: #2d3748 !important;
+}
+
+.list table th {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #495057 !important;
+}
+
+.list table td {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+/* Breadcrumbs */
+.breadcrumb,
+.breadcrumb * {
+    color: #2d3748 !important;
+}
+
+.breadcrumb a {
+    color: #667eea !important;
+}
+
+/* Status badges - maintain their specific colors */
+.status-badge.status-success {
+    background: #d4edda !important;
+    color: #155724 !important;
+}
+
+.status-badge.status-secondary {
+    background: #e2e3e5 !important;
+    color: #383d41 !important;
+}
+
+.status-badge.status-warning {
+    background: #fff3cd !important;
+    color: #856404 !important;
+}
+
+.status-badge.status-danger {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+}
+
+/* Currency and date formatting */
+.currency-formatted {
+    color: #28a745 !important;
+    background: linear-gradient(135deg, #f1f8e9, #dcedc8) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+.date-formatted {
+    color: #2e7d2e !important;
+    background: linear-gradient(135deg, #e8f5e8, #f0f8f0) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+/* Priority indicators */
+.dashletPanel .list table td:contains("High"),
+.dashletPanel .list table td:contains("Urgent") {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2) !important;
+    color: #c62828 !important;
+}
+
+.dashletPanel .list table td:contains("Medium") {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2) !important;
+    color: #ef6c00 !important;
+}
+
+.dashletPanel .list table td:contains("Low") {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9) !important;
+    color: #2e7d2e !important;
+}
+
+/* Empty states */
+.empty-state,
+.empty-state *,
+.sidebar-empty-state,
+.sidebar-empty-state * {
+    color: #6c757d !important;
+}
+
+/* Loading states */
+.loading-modern,
+.loading-modern * {
+    color: #6c757d !important;
+}
+
+/* Statistics in sidebar */
+.stat-number {
+    color: #667eea !important;
+    font-weight: bold !important;
+}
+
+.stat-label {
+    color: #6c757d !important;
+}
+
+/* Recent items in sidebar */
+.recent-item-title {
+    color: #495057 !important;
+}
+
+.recent-item-meta {
+    color: #6c757d !important;
+}
+
+/* Favorites in sidebar */
+.favorite-item a {
+    color: #495057 !important;
+}
+
+.favorite-item a:hover {
+    color: #667eea !important;
+}
+
+/* Dashboard theme indicators */
+.dashboard[data-theme="sales"]::before,
+.dashboard[data-theme="marketing"]::before,
+.dashboard[data-theme="activity"]::before,
+.dashboard[data-theme="collaboration"]::before {
+    color: white !important;
+}
+
+/* Header and navigation areas */
+#ajaxHeader,
+#ajaxHeader *,
+.navbar-header,
+.navbar-header * {
+    color: white !important;
+}
+
+/* Module titles */
+.moduleTitle,
+.moduleTitle * {
+    color: #2d3748 !important;
+}
+
+/* Search inputs */
+input[type="search"],
+.search-input {
+    color: #2d3748 !important;
+    background: white !important;
+}
+
+/* Pagination */
+.dashletPanel .pagination,
+.dashletPanel .pagination * {
+    color: #495057 !important;
+}
+
+.dashletPanel .pagination button {
+    color: #495057 !important;
+    background: white !important;
+}
+
+.dashletPanel .pagination button:hover {
+    color: #495057 !important;
+    background: #e9ecef !important;
+}
+
+/* Action buttons in tables */
+.dashletPanel .list table .sugar_action_button {
+    color: white !important;
+}
+
+/* Ensure icons inherit proper colors */
+i.fas, i.fa {
+    color: inherit !important;
+}
+
+/* Override any specific color settings that might conflict */
+* {
+    text-shadow: none !important;
+}
+
+/* Keep text shadows only for headers on colored backgrounds */
+.dashletPanel .hd h3,
+.sidebar-header h4,
+.modal-header .modal-title,
+.nav-dashboard .active a,
+.quick-action-btn,
+.dashboard[data-theme]::before {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}
+
+/* Fix for any remaining visibility issues */
+.dashboard-title,
+.dashboard-subtitle,
+.dashboard-icon {
+    color: white !important;
+}
+
+/* Ensure all text in main content areas is dark */
+#pageContainer,
+#pageContainer *,
+.main-content,
+.main-content *,
+.content,
+.content * {
+    color: #2d3748 !important;
+}
+
+/* Links should be blue */
+a, a:link {
+    color: #0066cc !important;
+}
+
+a:hover {
+    color: #004499 !important;
+}
+
+/* Exception: links in colored backgrounds should be white */
+.dashletPanel .hd a,
+.sidebar-header a,
+.modal-header a,
+.nav-dashboard .active a,
+.quick-action-btn,
+.button,
+.btn {
+    color: white !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #2d3748 !important;
+}
+
+/* Exception: headings in colored backgrounds */
+.dashletPanel .hd h1,
+.dashletPanel .hd h2,
+.dashletPanel .hd h3,
+.dashletPanel .hd h4,
+.dashletPanel .hd h5,
+.dashletPanel .hd h6,
+.sidebar-header h1,
+.sidebar-header h2,
+.sidebar-header h3,
+.sidebar-header h4,
+.sidebar-header h5,
+.sidebar-header h6,
+.modal-header h1,
+.modal-header h2,
+.modal-header h3,
+.modal-header h4,
+.modal-header h5,
+.modal-header h6 {
+    color: white !important;
+}

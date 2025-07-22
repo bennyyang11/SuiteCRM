@@ -1,0 +1,447 @@
+/**
+ * Modern UI Enhancements for SuiteCRM
+ * Comprehensive user interface improvements
+ */
+
+/* Overall layout improvements */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+    line-height: 1.6;
+}
+
+/* Header and navigation improvements */
+#ajaxHeader {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 20px;
+}
+
+.navbar-header {
+    padding: 10px 20px;
+}
+
+/* Module tabs enhancement */
+.moduleTitle {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Form improvements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    border: 2px solid #e1e5e9 !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    background: white !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none !important;
+}
+
+/* Button improvements */
+.button,
+input[type="submit"],
+input[type="button"],
+.btn {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+}
+
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.btn:hover {
+    background: linear-gradient(135deg, #5a67d8, #667eea) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Secondary buttons */
+.button.secondary,
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #5a6268) !important;
+}
+
+.button.secondary:hover,
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268, #495057) !important;
+}
+
+/* Success buttons */
+.button.success,
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+}
+
+.button.success:hover,
+.btn-success:hover {
+    background: linear-gradient(135deg, #20c997, #17a2b8) !important;
+}
+
+/* Danger buttons */
+.button.danger,
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #e91e63) !important;
+}
+
+.button.danger:hover,
+.btn-danger:hover {
+    background: linear-gradient(135deg, #e91e63, #ad1457) !important;
+}
+
+/* Card-like panels */
+.panel,
+.edit tr,
+.view tr {
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    margin: 10px 0 !important;
+    padding: 15px !important;
+    border: none !important;
+}
+
+/* Table improvements */
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+    width: 100%;
+}
+
+table th {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    padding: 15px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    border: none !important;
+}
+
+table td {
+    padding: 12px 15px !important;
+    border: none !important;
+    background: white !important;
+    vertical-align: middle;
+}
+
+table tr {
+    background: white !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    transition: all 0.2s ease !important;
+}
+
+table tr:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* List view improvements */
+.list table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+
+.list table tr {
+    border-bottom: 1px solid #f1f3f4 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.list table tr:hover {
+    background: linear-gradient(135deg, #f8f9ff, #fff8f9) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Sidebar improvements */
+.sidebar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 10px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+/* Search box improvements */
+input[type="search"],
+.search-input {
+    background: white !important;
+    border: 2px solid #e1e5e9 !important;
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+}
+
+input[type="search"]:focus,
+.search-input:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none !important;
+}
+
+/* Modal improvements */
+.modal-content {
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: none !important;
+    padding: 20px !important;
+}
+
+.modal-title {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+.modal-body {
+    padding: 25px !important;
+    background: #fafbfc !important;
+}
+
+.modal-footer {
+    background: #f8f9fa !important;
+    border: none !important;
+    padding: 15px 25px !important;
+}
+
+/* Dropdown improvements */
+.dropdown-menu {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    padding: 8px 0 !important;
+    margin-top: 8px !important;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px !important;
+    transition: all 0.2s ease !important;
+    color: #495057 !important;
+}
+
+.dropdown-menu li a:hover {
+    background: linear-gradient(135deg, #f8f9ff, #fff8f9) !important;
+    color: #667eea !important;
+}
+
+/* Alert and notification improvements */
+.alert {
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 15px 20px !important;
+    margin: 15px 0 !important;
+    font-weight: 500 !important;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb) !important;
+    color: #0c5460 !important;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
+    color: #155724 !important;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7) !important;
+    color: #856404 !important;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb) !important;
+    color: #721c24 !important;
+}
+
+/* Loading states */
+.loading {
+    position: relative;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #667eea;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Improved spacing and typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+    color: #2d3748 !important;
+    margin-bottom: 0.5em !important;
+}
+
+h1 { font-size: 2rem !important; }
+h2 { font-size: 1.5rem !important; }
+h3 { font-size: 1.25rem !important; }
+h4 { font-size: 1.1rem !important; }
+
+p {
+    color: #4a5568 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1em !important;
+}
+
+/* Link improvements */
+a {
+    color: #667eea !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+a:hover {
+    color: #5a67d8 !important;
+    text-decoration: underline !important;
+}
+
+/* Breadcrumb improvements */
+.breadcrumb {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    margin: 10px 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.breadcrumb a {
+    color: #667eea !important;
+    font-weight: 500 !important;
+}
+
+/* Status indicators */
+.status-active {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+    padding: 4px 12px !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.status-inactive {
+    background: linear-gradient(135deg, #6c757d, #5a6268) !important;
+    color: white !important;
+    padding: 4px 12px !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.status-pending {
+    background: linear-gradient(135deg, #ffc107, #fd7e14) !important;
+    color: white !important;
+    padding: 4px 12px !important;
+    border-radius: 15px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px !important;
+    }
+    
+    .button,
+    input[type="submit"],
+    input[type="button"],
+    .btn {
+        padding: 12px 16px !important;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 12px !important;
+    }
+    
+    table th,
+    table td {
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+    }
+    
+    .modal-body {
+        padding: 15px !important;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus {
+    outline: 2px solid #667eea !important;
+    outline-offset: 2px !important;
+}
+
+/* Print styles */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .button,
+    .btn {
+        border: 1px solid black !important;
+    }
+}

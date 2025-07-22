@@ -1,0 +1,309 @@
+/**
+ * CRITICAL Sidebar Text Visibility Fix
+ * Forces all sidebar text to be dark and visible
+ */
+
+/* FORCE sidebar background to be white */
+#sidebar,
+.sidebar,
+#sidebar_container {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+/* FORCE all sidebar text to be dark */
+.sidebar,
+.sidebar *,
+.sidebar div,
+.sidebar span,
+.sidebar p,
+.sidebar a,
+.sidebar li,
+.sidebar ul,
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.actionMenuSidebar,
+.actionMenuSidebar *,
+.recentlyViewedSidebar,
+.recentlyViewedSidebar *,
+.favoritesSidebar,
+.favoritesSidebar *,
+.recent_h3,
+.actionmenulinks,
+.actionmenulinks *,
+.recentlinks,
+.recentlinks *,
+.recently_viewed_link_container_sidebar,
+.recently_viewed_link_container_sidebar * {
+    color: #2d3748 !important;
+}
+
+/* FORCE section headers to be dark with light background */
+.sidebar-section-header {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+    font-weight: bold !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.sidebar-section-header * {
+    color: #2d3748 !important;
+}
+
+/* FORCE section content to have dark text */
+.sidebar-section-content {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+.sidebar-section-content * {
+    color: #2d3748 !important;
+}
+
+/* FORCE quick actions to be visible */
+.quick-actions,
+.quick-actions * {
+    color: #2d3748 !important;
+}
+
+/* Quick action buttons should have white text on colored background */
+.quick-action-btn {
+    background: #667eea !important;
+    color: white !important;
+    border: none !important;
+}
+
+.quick-action-btn * {
+    color: white !important;
+}
+
+/* FORCE recent items to be dark */
+.recent-item,
+.recent-item * {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+.recent-item-title {
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+}
+
+.recent-item-meta {
+    color: #6c757d !important;
+}
+
+/* FORCE favorites to be dark */
+.favorite-item,
+.favorite-item * {
+    color: #2d3748 !important;
+}
+
+.favorite-item a {
+    color: #2d3748 !important;
+    text-decoration: none !important;
+}
+
+.favorite-item a:hover {
+    color: #667eea !important;
+}
+
+/* FORCE stats to be visible */
+.stats-grid,
+.stats-grid * {
+    color: #2d3748 !important;
+}
+
+.stat-item {
+    background: white !important;
+    border: 1px solid #e9ecef !important;
+    color: #2d3748 !important;
+}
+
+.stat-number {
+    color: #667eea !important;
+    font-weight: bold !important;
+}
+
+.stat-label {
+    color: #6c757d !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+}
+
+/* FORCE empty states to be visible */
+.sidebar-empty-state {
+    color: #6c757d !important;
+    text-align: center !important;
+    padding: 20px !important;
+}
+
+.sidebar-empty-state * {
+    color: #6c757d !important;
+}
+
+/* Keep only the main header with colored background and white text */
+.sidebar-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+}
+
+.sidebar-header * {
+    color: white !important;
+}
+
+/* Override any conflicting styles */
+.sidebar [style*="color"] {
+    color: #2d3748 !important;
+}
+
+/* CRITICAL: Force all specific sidebar elements */
+.actionmenulink {
+    color: #2d3748 !important;
+    font-weight: 500 !important;
+}
+
+.recent-links-detail,
+.recent-links-detail *,
+.favorite-links-detail,
+.favorite-links-detail * {
+    color: #2d3748 !important;
+    text-decoration: none !important;
+}
+
+.recent-links-detail:hover,
+.favorite-links-detail:hover {
+    color: #667eea !important;
+}
+
+/* Ensure h2 headers are visible */
+.recent_h3 {
+    color: #2d3748 !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    margin: 15px 0 10px 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* Force all navigation items */
+.nav-pills li a,
+.nav-stacked li a {
+    color: #2d3748 !important;
+}
+
+/* Force suitepicon colors */
+.suitepicon {
+    color: inherit !important;
+}
+
+/* ENHANCE: Make header text bigger and more visible */
+.sidebar-header h4 {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: white !important;
+    margin: 0 0 8px 0 !important;
+}
+
+.sidebar-header .user-info {
+    font-size: 14px !important;
+    color: white !important;
+    line-height: 1.4 !important;
+}
+
+.sidebar-header .user-info small {
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    display: block !important;
+    margin-top: 2px !important;
+}
+
+/* CRITICAL: Fix invisible text in middle sections */
+.stat-item,
+.stat-item * {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+.stat-number {
+    color: #667eea !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+}
+
+.stat-label {
+    color: #6c757d !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.recent-item,
+.recent-item * {
+    color: #2d3748 !important;
+    background: transparent !important;
+}
+
+.recent-item-title {
+    color: #2d3748 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.recent-item-meta {
+    color: #6c757d !important;
+    font-size: 11px !important;
+}
+
+.favorite-item,
+.favorite-item * {
+    color: #2d3748 !important;
+}
+
+.favorite-item a {
+    color: #2d3748 !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+}
+
+.sidebar-empty-state {
+    color: #6c757d !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    padding: 15px !important;
+    font-style: italic !important;
+}
+
+.sidebar-empty-state i {
+    color: #6c757d !important;
+    margin-right: 5px !important;
+}
+
+/* Make section headers more visible */
+.sidebar-section-header {
+    font-size: 0.9rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 12px 20px !important;
+}
+
+/* Add borders for better separation */
+.sidebar-section {
+    border-bottom: 1px solid #f1f3f4 !important;
+}
+
+/* Ensure icons are visible */
+.sidebar i {
+    color: inherit !important;
+}
+
+.sidebar-section-header i {
+    color: #2d3748 !important;
+}
+
+.quick-action-btn i {
+    color: white !important;
+}

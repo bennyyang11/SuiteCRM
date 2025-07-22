@@ -1,0 +1,273 @@
+/**
+ * CRITICAL Navigation Tabs Fix
+ * Fixes broken display of main navigation tabs
+ */
+
+/* Fix navigation container */
+.navbar-nav .topnav {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 8px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    vertical-align: top !important;
+}
+
+/* Fix tab styling */
+.navbar-nav .topnav > span {
+    display: inline-block !important;
+    height: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: top !important;
+}
+
+.navbar-nav .topnav > span > a {
+    display: inline-block !important;
+    padding: 0 12px !important;
+    height: 50px !important;
+    line-height: 47px !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-top: 3px solid transparent !important;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Active tab styling */
+.navbar-nav .topnav > span.currentTab > a {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-top: 3px solid #4CAF50 !important;
+    color: #4CAF50 !important;
+}
+
+/* Hover effects */
+.navbar-nav .topnav > span.notCurrentTab > a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-top: 3px solid rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Current module but not active tab */
+.navbar-nav .topnav > span.currentModule.notCurrentTab > a {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Fix dropdown menus in navigation */
+.navbar-nav .topnav .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 1000 !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+/* CRITICAL: Fix dropdown menu text visibility - AGGRESSIVE TARGETING */
+.dropdown-menu,
+.dropdown-menu *,
+.topnav .dropdown-menu,
+.topnav .dropdown-menu *,
+.navbar-nav .dropdown-menu,
+.navbar-nav .dropdown-menu *,
+.navbar-nav .topnav .dropdown-menu,
+.navbar-nav .topnav .dropdown-menu * {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+.navbar-nav .topnav .dropdown-menu li {
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+.navbar-nav .topnav .dropdown-menu li a,
+.dropdown-menu li a,
+.topnav .dropdown-menu li a {
+    color: #2d3748 !important;
+    background: white !important;
+    padding: 8px 15px !important;
+    display: block !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: normal !important;
+    line-height: 1.4 !important;
+}
+
+/* Override ALL possible dropdown text styles */
+.dropdown-menu a,
+.dropdown-menu span,
+.dropdown-menu li,
+.dropdown-menu div {
+    color: #2d3748 !important;
+}
+
+.navbar-nav .topnav .dropdown-menu li a:hover {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+}
+
+.navbar-nav .topnav .dropdown-menu li a:focus {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+}
+
+/* NUCLEAR OPTION: Force ALL dropdown elements to be visible */
+ul.dropdown-menu,
+ul.dropdown-menu *,
+.nav .dropdown-menu,
+.nav .dropdown-menu *,
+div[class*="dropdown"],
+div[class*="dropdown"] *,
+.open .dropdown-menu,
+.open .dropdown-menu * {
+    color: #2d3748 !important;
+    background-color: white !important;
+}
+
+/* Target specific SuiteCRM dropdown classes */
+.actionmenulinks,
+.actionmenulinks *,
+.recentlinks,
+.recentlinks *,
+.favoritelinks,
+.favoritelinks * {
+    color: #2d3748 !important;
+    background: white !important;
+}
+
+/* Fix any nested dropdown items */
+.navbar-nav .topnav .dropdown-menu li span {
+    color: #2d3748 !important;
+}
+
+.navbar-nav .topnav .dropdown-menu li .suitepicon {
+    color: #6c757d !important;
+    margin-right: 8px !important;
+}
+
+/* Fix dropdown headers/dividers */
+.navbar-nav .topnav .dropdown-menu .dropdown-header {
+    color: #6c757d !important;
+    background: #f8f9fa !important;
+    font-weight: bold !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    padding: 8px 15px !important;
+}
+
+.navbar-nav .topnav .dropdown-menu .divider {
+    background: #e9ecef !important;
+    height: 1px !important;
+    margin: 5px 0 !important;
+}
+
+/* Fix recent/favorite items in dropdowns */
+.navbar-nav .topnav .dropdown-menu .recentlinks a,
+.navbar-nav .topnav .dropdown-menu .favoritelinks a {
+    color: #2d3748 !important;
+    background: white !important;
+}
+
+.navbar-nav .topnav .dropdown-menu .recentlinks a:hover,
+.navbar-nav .topnav .dropdown-menu .favoritelinks a:hover {
+    background: #f8f9fa !important;
+    color: #667eea !important;
+}
+
+/* Fix navbar container */
+.navbar-inverse {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    min-height: 50px !important;
+}
+
+.navbar-inverse .navbar-nav {
+    display: inline-block !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure proper alignment */
+.navbar-nav {
+    display: inline-block !important;
+    vertical-align: top !important;
+}
+
+/* Fix any layout issues */
+.navbar-collapse {
+    overflow: visible !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove any conflicting backgrounds */
+.topnav > span.notCurrentTab,
+.topnav > span.currentTab {
+    background: transparent !important;
+}
+
+/* Make sure icons are visible */
+.topnav .suitepicon {
+    color: inherit !important;
+    margin-right: 5px !important;
+}
+
+/* Fix responsive behavior */
+@media (max-width: 767px) {
+    .navbar-nav .topnav {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .navbar-nav .topnav > span {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .navbar-nav .topnav > span > a {
+        display: block !important;
+        width: 100% !important;
+        text-align: left !important;
+        padding: 10px 15px !important;
+        border-top: none !important;
+        border-left: 3px solid transparent !important;
+    }
+    
+    .navbar-nav .topnav > span.currentTab > a {
+        border-left: 3px solid #4CAF50 !important;
+        border-top: none !important;
+    }
+}
+
+/* ABSOLUTE FINAL FIX: Override any white text in dropdowns */
+[style*="color: white"],
+[style*="color:#ffffff"],
+[style*="color:#fff"],
+[style*="color: #ffffff"],
+[style*="color: #fff"] {
+    color: #2d3748 !important;
+}
+
+/* Bootstrap dropdown overrides */
+.dropdown-menu > li > a {
+    color: #2d3748 !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    color: #2d3748 !important;
+    background-color: #f8f9fa !important;
+}

@@ -76,7 +76,7 @@ if (class_exists('SuiteCRM\Authentication\Security\SecurityHeaders')) {
 /**
  * Check if current request is an AJAX request
  */
-function isAjaxRequest(): bool
+function isAjaxRequest()
 {
     return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
@@ -85,7 +85,7 @@ function isAjaxRequest(): bool
 /**
  * Check if current request is a form submission
  */
-function isFormSubmission(): bool
+function isFormSubmission()
 {
     // Form submissions typically have these characteristics
     return isset($_POST['action']) || 
@@ -96,7 +96,7 @@ function isFormSubmission(): bool
 /**
  * Check if current request should be excluded from CSRF validation
  */
-function isExcludedFromCSRF(): bool
+function isExcludedFromCSRF()
 {
     $excludedActions = [
         'Login',
@@ -229,7 +229,7 @@ function initializeJWTValidation(): void
 /**
  * Check if current endpoint is public (doesn't require authentication)
  */
-function isPublicEndpoint(): bool
+function isPublicEndpoint()
 {
     $publicActions = ['Login', 'Authenticate', 'Logout'];
     $publicEntryPoints = ['oauth_login', 'oauth_callback', 'GeneratePassword'];

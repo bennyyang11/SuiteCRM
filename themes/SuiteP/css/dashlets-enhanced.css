@@ -1,0 +1,364 @@
+/**
+ * Enhanced Dashlet Styling for Better User Experience
+ * Improves My Calls, My Meetings, My Opportunities, etc.
+ */
+
+/* Enhanced Dashlet Content */
+.dashletPanel .bd {
+    padding: 0 !important;
+    background: white !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* Better table styling in dashlets */
+.dashletPanel .list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: white;
+}
+
+.dashletPanel .list table th {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    padding: 12px 15px !important;
+    border: none !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.dashletPanel .list table td {
+    padding: 12px 15px !important;
+    border: none !important;
+    border-bottom: 1px solid #f1f3f4 !important;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.dashletPanel .list table tr:hover {
+    background: linear-gradient(135deg, #f8f9ff, #fff8f9) !important;
+    transform: translateX(2px);
+    transition: all 0.2s ease;
+}
+
+.dashletPanel .list table tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Enhanced links in dashlets */
+.dashletPanel .list table a {
+    color: #0066cc !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dashletPanel .list table a:hover {
+    color: #004499 !important;
+    text-decoration: underline !important;
+}
+
+/* Status indicators and badges */
+.dashletPanel .list table td[data-label*="Status"],
+.dashletPanel .list table td:has(span[style*="background"]) {
+    position: relative;
+}
+
+/* Date formatting */
+.dashletPanel .list table td[data-label*="Date"],
+.dashletPanel .list table td:contains("2024"),
+.dashletPanel .list table td:contains("2025") {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+    border-radius: 4px;
+    padding: 8px 12px !important;
+    font-size: 0.85rem;
+    color: #2e7d2e;
+}
+
+/* Priority and status styling */
+.dashletPanel .list table td:contains("High"),
+.dashletPanel .list table td:contains("Urgent") {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2) !important;
+    color: #c62828 !important;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.dashletPanel .list table td:contains("Medium") {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2) !important;
+    color: #ef6c00 !important;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.dashletPanel .list table td:contains("Low") {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9) !important;
+    color: #2e7d2e !important;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* Currency and number formatting */
+.dashletPanel .list table td:contains("$"),
+.dashletPanel .list table td[data-label*="Amount"],
+.dashletPanel .list table td[data-label*="Value"] {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    color: #1b5e20;
+    background: linear-gradient(135deg, #f1f8e9, #dcedc8);
+    border-radius: 4px;
+    text-align: right;
+    padding: 8px 12px !important;
+}
+
+/* Enhanced dashlet headers with icons */
+.dashletPanel .hd {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+}
+
+.dashletPanel .hd h3 {
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    font-weight: 600;
+    margin: 0;
+}
+
+.dashletPanel .hd h3:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px;
+    font-size: 1.1em;
+    color: white !important;
+}
+
+/* Specific dashlet icons */
+.dashletPanel .hd h3[title*="Call" i]:before,
+.dashletPanel .hd h3:contains("Call"):before {
+    content: "\f095"; /* phone */
+}
+
+.dashletPanel .hd h3[title*="Meeting" i]:before,
+.dashletPanel .hd h3:contains("Meeting"):before {
+    content: "\f0c0"; /* users */
+}
+
+.dashletPanel .hd h3[title*="Opportunit" i]:before,
+.dashletPanel .hd h3:contains("Opportunit"):before {
+    content: "\f0b1"; /* briefcase */
+}
+
+.dashletPanel .hd h3[title*="Account" i]:before,
+.dashletPanel .hd h3:contains("Account"):before {
+    content: "\f1ad"; /* building */
+}
+
+.dashletPanel .hd h3[title*="Lead" i]:before,
+.dashletPanel .hd h3:contains("Lead"):before {
+    content: "\f007"; /* user */
+}
+
+.dashletPanel .hd h3[title*="Task" i]:before,
+.dashletPanel .hd h3:contains("Task"):before {
+    content: "\f0ae"; /* tasks */
+}
+
+.dashletPanel .hd h3[title*="Case" i]:before,
+.dashletPanel .hd h3:contains("Case"):before {
+    content: "\f0e7"; /* ticket */
+}
+
+.dashletPanel .hd h3[title*="Contact" i]:before,
+.dashletPanel .hd h3:contains("Contact"):before {
+    content: "\f2b9"; /* address book */
+}
+
+/* Empty state styling */
+.dashletPanel .bd:contains("No data to display"),
+.dashletPanel .bd:contains("No records found") {
+    text-align: center;
+    padding: 40px 20px !important;
+    color: #6c757d;
+    font-style: italic;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+}
+
+.dashletPanel .bd:contains("No data to display"):before,
+.dashletPanel .bd:contains("No records found"):before {
+    content: "\f1c5"; /* empty folder icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 2em;
+    display: block;
+    margin-bottom: 10px;
+    color: #adb5bd;
+}
+
+/* Pagination improvements */
+.dashletPanel .pagination {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    padding: 10px 15px !important;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid #dee2e6;
+}
+
+.dashletPanel .pagination button {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa) !important;
+    border: 1px solid #dee2e6 !important;
+    color: #495057 !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    margin: 0 2px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dashletPanel .pagination button:hover {
+    background: linear-gradient(135deg, #e9ecef, #dee2e6) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dashletPanel .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Dashlet refresh and settings buttons */
+.dashletToolSet {
+    padding: 5px;
+}
+
+.dashletToolSet a {
+    display: inline-block;
+    padding: 8px 10px !important;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin: 0 2px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dashletToolSet a:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: scale(1.1);
+}
+
+/* Chart dashlet improvements */
+.dashletPanel .bd canvas,
+.dashletPanel .bd svg {
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 10px;
+    background: white;
+}
+
+/* List view data improvements */
+.dashletPanel .list-view-data-icon {
+    padding: 4px 6px !important;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.dashletPanel .list-view-data-icon:hover {
+    background: rgba(0,0,0,0.1) !important;
+    transform: scale(1.2);
+}
+
+/* Responsive dashlet content */
+@media (max-width: 768px) {
+    .dashletPanel .list table {
+        font-size: 0.8rem;
+    }
+    
+    .dashletPanel .list table th,
+    .dashletPanel .list table td {
+        padding: 8px 10px !important;
+    }
+    
+    .dashletPanel .hd h3 {
+        font-size: 1rem;
+    }
+    
+    .dashletPanel .hd h3:before {
+        font-size: 0.9em;
+        margin-right: 5px;
+    }
+}
+
+/* Advanced animations */
+.dashletcontainer {
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effects for entire dashlet */
+.dashletcontainer:hover .dashletPanel .hd {
+    background: linear-gradient(135deg, #5a67d8, #667eea) !important;
+}
+
+/* Loading state improvements */
+.dashletPanel .bd img[src*="loading"] {
+    display: block;
+    margin: 20px auto;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Modern shadows and depth */
+.dashletcontainer {
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.1),
+        0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+.dashletcontainer:hover {
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.1),
+        0 4px 10px rgba(0,0,0,0.05) !important;
+}
+
+/* Improved text hierarchy */
+.dashletPanel .list table th {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.dashletPanel .hd h3 {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Action buttons styling */
+.dashletPanel .list table .sugar_action_button {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 4px 8px !important;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.dashletPanel .list table .sugar_action_button:hover {
+    background: linear-gradient(135deg, #5a67d8, #667eea) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
