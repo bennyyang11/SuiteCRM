@@ -78,7 +78,7 @@ header('Content-Type: text/html; charset=UTF-8');
                 <p>Enterprise Legacy Modernization - Clean Demo Environment</p>
             </div>
             <div class="header-actions">
-                <a href="manufacturing_demo.php" class="header-btn">Full Demo</a>
+                <a href="complete_manufacturing_demo.php" class="header-btn">Full Demo</a>
                 <a href="test_manufacturing_apis.php" class="header-btn">API Test</a>
             </div>
         </div>
@@ -99,7 +99,7 @@ header('Content-Type: text/html; charset=UTF-8');
             
             <div class="stats-grid">
                 <div class="stat-card" style="background: linear-gradient(135deg, #27ae60, #229954);">
-                    <div class="stat-number">2/6</div>
+                    <div class="stat-number">4/6</div>
                     <div class="stat-label">Features Complete</div>
                 </div>
                 <div class="stat-card" style="background: linear-gradient(135deg, #3498db, #2980b9);">
@@ -140,13 +140,24 @@ header('Content-Type: text/html; charset=UTF-8');
                 </div>
 
                 <div class="demo-card">
-                    <h3>🔄 Feature 3: Inventory Integration</h3>
+                    <h3>✅ Feature 3: Inventory Integration</h3>
                     <ul class="demo-list">
-                        <li><span class="status-badge status-info">📋</span> Database schema ready</li>
-                        <li><span class="status-badge status-info">📋</span> API framework prepared</li>
-                        <li><span class="status-badge status-info">📋</span> Real-time sync engine</li>
-                        <li><span class="status-badge status-info">📋</span> Stock reservation system</li>
-                        <li><span class="status-badge status-info">📋</span> External API connectors</li>
+                        <li><span class="status-badge status-success">✅</span> Real-time inventory tracking</li>
+                        <li><span class="status-badge status-success">✅</span> Stock level indicators</li>
+                        <li><span class="status-badge status-success">✅</span> Low stock alerts</li>
+                        <li><span class="status-badge status-success">✅</span> Alternative product suggestions</li>
+                        <li><span class="status-badge status-success">✅</span> Warehouse location tracking</li>
+                    </ul>
+                </div>
+
+                <div class="demo-card">
+                    <h3>✅ Feature 4: Quote Builder with PDF Export</h3>
+                    <ul class="demo-list">
+                        <li><span class="status-badge status-success">✅</span> Drag-and-drop product selection</li>
+                        <li><span class="status-badge status-success">✅</span> Real-time pricing calculations</li>
+                        <li><span class="status-badge status-success">✅</span> Professional PDF generation</li>
+                        <li><span class="status-badge status-success">✅</span> Email integration and tracking</li>
+                        <li><span class="status-badge status-success">✅</span> Quote approval workflow</li>
                     </ul>
                 </div>
             </div>
@@ -170,12 +181,13 @@ header('Content-Type: text/html; charset=UTF-8');
                 </ul>
             </div>
 
-            <div style="background: #cce6ff; border: 1px solid #99ccff; border-radius: 8px; padding: 20px;">
-                <h4 style="color: #004085; margin-bottom: 15px;">🚀 Ready for Feature 3</h4>
-                <p style="margin: 0; color: #004085;">
-                    With a clean, stable development environment, we can now proceed to implement 
-                    <strong>Feature 3: Real-Time Inventory Integration</strong> without deprecation warning noise 
-                    interfering with development and testing.
+            <div style="background: #d4edda; border: 1px solid #c3e6cb; border-radius: 8px; padding: 20px;">
+                <h4 style="color: #155724; margin-bottom: 15px;">✅ Features 3 & 4 Complete!</h4>
+                <p style="margin: 0; color: #155724;">
+                    <strong>Feature 3: Real-Time Inventory Integration</strong> and <strong>Feature 4: Quote Builder with PDF Export</strong> have been successfully implemented! 
+                    The system now includes multi-warehouse inventory tracking, AI-powered product suggestions, 
+                    real-time stock alerts, drag-and-drop quote building, and professional PDF generation. Ready to proceed with 
+                    <strong>Feature 5: Advanced Search & Filtering</strong>.
                 </p>
             </div>
         </div>

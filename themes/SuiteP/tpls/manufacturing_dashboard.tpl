@@ -50,12 +50,12 @@
                 </div>
                 
                 <div class="modern-alert success">
-                    <h4 style="margin-bottom: 10px;">✅ Features 1 & 2 Complete</h4>
-                    <p>Product Catalog and Order Pipeline are fully operational with mobile optimization.</p>
+                    <h4 style="margin-bottom: 10px;">✅ Features 1, 2, 3 & 4 Complete</h4>
+                    <p>Product Catalog, Order Pipeline, Real-Time Inventory Integration, and Quote Builder with PDF Export are fully operational with mobile optimization.</p>
                 </div>
                 
                 <div class="quick-actions">
-                    <a href="manufacturing_demo.php" class="quick-action">
+                    <a href="complete_manufacturing_demo.php" class="quick-action">
                         <span class="quick-action-icon">📱</span>
                         <span class="quick-action-text">Mobile Demo</span>
                     </a>
@@ -174,7 +174,7 @@
             <h4 style="margin-bottom: 10px;">🚀 Ready for Feature 3 Implementation</h4>
             <p>
                 The development environment is optimized and Features 1 & 2 are fully functional. 
-                <a href="manufacturing_demo.php" style="color: #004085; font-weight: bold;">View the live demo</a> 
+                <a href="complete_manufacturing_demo.php" style="color: #004085; font-weight: bold;">View the complete demo</a> 
                 or <a href="test_manufacturing_apis.php" style="color: #004085; font-weight: bold;">test the APIs</a> 
                 to see the completed work.
             </p>

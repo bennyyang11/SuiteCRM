@@ -32,7 +32,7 @@ if (file_exists('config.php')) {
     echo "</div>";
     
     echo "<div class='nav-links'>";
-    echo "<a href='manufacturing_demo.php' class='nav-link'>📱 Manufacturing Demo</a>";
+    echo "<a href='complete_manufacturing_demo.php' class='nav-link'>📱 Manufacturing Demo</a>";
     echo "<a href='clean_demo.php' class='nav-link'>🧹 Clean Demo</a>";
     echo "<a href='test_manufacturing_apis.php' class='nav-link'>🔧 API Test</a>";
     echo "<a href='index.php?module=Users&action=Login' class='nav-link'>🔐 Login to SuiteCRM</a>";
@@ -49,7 +49,7 @@ if (file_exists('config.php')) {
     
     echo "<h3>Access Points</h3>";
     echo "<ul>";
-    echo "<li><strong>Manufacturing Demo:</strong> <a href='manufacturing_demo.php'>Complete feature showcase</a></li>";
+    echo "<li><strong>Manufacturing Demo:</strong> <a href='complete_manufacturing_demo.php'>Complete feature showcase</a></li>";
     echo "<li><strong>Clean Demo:</strong> <a href='clean_demo.php'>Warning-free presentation mode</a></li>";
     echo "<li><strong>API Testing:</strong> <a href='test_manufacturing_apis.php'>Technical validation</a></li>";
     echo "<li><strong>SuiteCRM Login:</strong> <a href='index.php?module=Users&action=Login'>Admin interface</a></li>";

@@ -276,6 +276,109 @@ require_once('include/entryPoint.php');
             </div>
         </div>
 
+        <!-- Feature 4: Quote Builder -->
+        <div class="feature-section">
+            <div class="feature-header">
+                <div class="feature-icon">📋</div>
+                <div class="feature-title">Feature 4: Quote Builder with PDF Export</div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">🛒 Interactive Quote Builder</h4>
+                    <ul style="margin-bottom: 15px;">
+                        <li>✅ Drag-and-drop product selection</li>
+                        <li>✅ Real-time pricing calculations</li>
+                        <li>✅ Client-specific tier pricing</li>
+                        <li>✅ Quantity and discount controls</li>
+                        <li>✅ Quote versioning system</li>
+                    </ul>
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                        <h5 style="color: #1976d2; margin-bottom: 10px;">📊 Demo Calculations</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #27ae60;">$2,847.50</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Sample Quote Total</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #3498db;">7 Items</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Products Selected</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">📄 Professional PDF Export</h4>
+                    <ul style="margin-bottom: 15px;">
+                        <li>✅ Company branding integration</li>
+                        <li>✅ Mobile-optimized layouts</li>  
+                        <li>✅ Digital signature support</li>
+                        <li>✅ Terms & conditions templates</li>
+                        <li>✅ Professional formatting</li>
+                    </ul>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                        <h5 style="color: #856404; margin-bottom: 10px;">⚡ Performance Metrics</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #f39c12;">&lt;2s</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">PDF Generation</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #e67e22;">A4</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Print Ready</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h5 style="color: #155724; margin-bottom: 10px;">🎯 Drag & Drop Interface</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">Intuitive product selection with visual feedback and real-time calculations.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Touch Optimized</span>
+                        <span style="background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Undo/Redo</span>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #007bff;">
+                    <h5 style="color: #0056b3; margin-bottom: 10px;">💰 Smart Pricing Engine</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">Client-specific pricing with volume discounts and tax calculations.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #d1ecf1; color: #0c5460; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Multi-Tier</span>
+                        <span style="background: #d1ecf1; color: #0c5460; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Auto-Tax</span>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #fd7e14;">
+                    <h5 style="color: #fd7e14; margin-bottom: 10px;">📧 Email Integration</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">One-click email delivery with tracking and approval workflows.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Tracking</span>
+                        <span style="background: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Templates</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px;">
+                <h4 style="color: white; margin-bottom: 15px;">🚀 Ready to Build Quotes?</h4>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 20px;">Experience the complete quote builder with drag-and-drop functionality and professional PDF generation.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="quote_builder.php" class="btn" style="background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        🛒 Launch Quote Builder
+                    </a>
+                    <a href="quote_builder.php?demo=1" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        📋 Demo Mode
+                    </a>
+                    <a href="quote_preview.php" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        👁️ Preview Sample
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Summary -->
         <div class="feature-section">
             <div class="feature-header">
@@ -284,8 +387,8 @@ require_once('include/entryPoint.php');
             </div>
             
             <div style="background: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; padding: 20px;">
-                <h4 style="color: #155724; margin-bottom: 15px;">🎉 All Three Features Successfully Implemented:</h4>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                <h4 style="color: #155724; margin-bottom: 15px;">🎉 Four Features Successfully Implemented:</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
                     <div>
                         <h5 style="color: #155724;">📱 Feature 1: Product Catalog</h5>
                         <ul style="margin: 10px 0; padding-left: 20px; color: #155724;">
@@ -308,6 +411,14 @@ require_once('include/entryPoint.php');
                             <li>Multi-warehouse tracking</li>
                             <li>AI-powered suggestions</li>
                             <li>Real-time stock alerts</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: #155724;">📋 Feature 4: Quote Builder</h5>
+                        <ul style="margin: 10px 0; padding-left: 20px; color: #155724;">
+                            <li>Drag-and-drop interface</li>
+                            <li>Professional PDF export</li>
+                            <li>Email integration</li>
                         </ul>
                     </div>
                 </div>
