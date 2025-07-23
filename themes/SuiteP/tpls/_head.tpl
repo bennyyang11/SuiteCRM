@@ -76,19 +76,12 @@
     {/literal}
     {$SUGAR_CSS}
     <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/colourSelector.php">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/dashboard-themes-minimal.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/dashlets-enhanced.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/ui-modernization.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/sidebar-enhancement.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/contrast-fixes.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/sidebar-text-fix.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/navigation-fix.css">
-    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/sidebar-headers-fix.css">
+    <!-- Combined UI Fixes - Single file to reduce HTTP requests -->
+    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/combined-ui-fixes.css">
+    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/manufacturing-navigation.css">
     <script type="text/javascript" src='{sugar_getjspath file="themes/SuiteP/js/jscolor.js"}'></script>
-    <script type="text/javascript" src="themes/SuiteP/js/dashboard-themes-simple.js"></script>
-    <script type="text/javascript" src="themes/SuiteP/js/dashlet-enhancements.js"></script>
-    <script type="text/javascript" src="themes/SuiteP/js/sidebar-enhancement.js"></script>
-</script>
+    <!-- Reduced JS loading - Only essential UI fixes -->
+    <script type="text/javascript" src="themes/SuiteP/js/optimized-ui-fixes.js"></script>
     <script type="text/javascript" src='{sugar_getjspath file="cache/include/javascript/sugar_field_grp.js"}'></script>
     <script type="text/javascript" src='{sugar_getjspath file="vendor/tinymce/tinymce/tinymce.min.js"}'></script>
 </head>

@@ -1,0 +1,136 @@
+/* Combined UI Fixes for SuiteCRM - Single File to Reduce HTTP Requests */
+
+/* Critical UI Fixes */
+.btn, button, input[type="submit"], input[type="button"] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+}
+
+/* Navigation Dropdown Fixes */
+.nav .dropdown-menu {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: 1px solid #cccccc !important;
+}
+
+.nav .dropdown-menu li a {
+    color: #333333 !important;
+    background-color: transparent !important;
+}
+
+.nav .dropdown-menu li a:hover {
+    background-color: #f5f5f5 !important;
+    color: #262626 !important;
+}
+
+/* Sidebar Manager Fixes */
+.sidebar-toggle {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.sidebar-manager.open .sidebar-toggle::after {
+    content: "×" !important;
+    font-size: 18px !important;
+}
+
+.sidebar-manager .sidebar-content {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}
+
+.sidebar-manager .sidebar-content h3,
+.sidebar-manager .sidebar-content h4,
+.sidebar-manager .sidebar-content .section-title {
+    color: #333333 !important;
+    background-color: transparent !important;
+}
+
+/* Quick Stats, Recently Viewed, Favorites Sections */
+.quick-stats, .recently-viewed, .favorites {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}
+
+.quick-stats h4, .recently-viewed h4, .favorites h4 {
+    color: #333333 !important;
+    font-weight: bold !important;
+}
+
+/* General Text Visibility Fixes */
+.sidebar-manager ul li,
+.sidebar-manager ul li a,
+.sidebar-manager .list-item {
+    color: #333333 !important;
+    background-color: transparent !important;
+}
+
+/* Dashboard Layout Fixes */
+.dashlet, .dashletPanel, .dashletContainer {
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Ensure dashboard tables take full width */
+.subpanelTabForm {
+    width: 100% !important;
+    table-layout: auto !important;
+}
+
+/* Main Container and Wrapper Fixes */
+#bootstrap-container, .bootstrap-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+/* Dashboard container fixes */
+#pagecontent, .pageContent, #content, .content {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+/* Override Bootstrap column constraints for dashboard */
+.col-sm-9, .col-sm-offset-3, .col-md-10, .col-md-offset-2 {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+
+/* Dashboard page container */
+#pageContainer, .pageContainer {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Dashboard table fixes */
+.dashletTable, table.dashletTable {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+.dashletTable td {
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+/* Performance Optimizations - More Specific */
+.sugar-chart, .chart-container {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Reduce animation overhead - Only for specific elements */
+.btn, .dropdown-menu, .modal, .alert {
+    transition-duration: 0.1s !important;
+}
+
+/* Optimize image loading */
+img {
+    image-rendering: optimizeSpeed;
+} 

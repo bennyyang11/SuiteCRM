@@ -126,3 +126,137 @@
     background: #667eea !important;
     color: white !important;
 }
+
+/* ====================================
+   ENHANCED QUICK STATS STYLING
+   ==================================== */
+
+/* Apply gradient background to Quick Stats boxes */
+.stat-item,
+.stats-grid .stat-item,
+.sidebar .stat-item {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin: 8px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4) !important;
+}
+
+.stat-number {
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+    display: block !important;
+    margin-bottom: 4px !important;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 500 !important;
+}
+
+/* ====================================
+   PERSISTENT TOGGLE BUTTON STYLING
+   ==================================== */
+
+/* Ensure toggle button is always visible with proper animations */
+#buttontoggle,
+.buttontoggle,
+.persistent-toggle {
+    display: block !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: 15px !important;
+    z-index: 99999 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    transition: transform 0.2s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#buttontoggle:hover,
+.buttontoggle:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+
+/* Hamburger menu styling */
+#buttontoggle span,
+.buttontoggle span {
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    background: white !important;
+    margin: 3px auto !important;
+    transition: 0.3s !important;
+    border-radius: 2px !important;
+    position: relative !important;
+}
+
+#buttontoggle span:before,
+#buttontoggle span:after,
+.buttontoggle span:before,
+.buttontoggle span:after {
+    content: '' !important;
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    background: white !important;
+    position: absolute !important;
+    transition: 0.3s !important;
+    border-radius: 2px !important;
+}
+
+#buttontoggle span:before,
+.buttontoggle span:before {
+    top: -6px !important;
+}
+
+#buttontoggle span:after,
+.buttontoggle span:after {
+    top: 6px !important;
+}
+
+/* Animate to X when sidebar is open */
+#buttontoggle.open span,
+.buttontoggle.open span {
+    background: transparent !important;
+}
+
+#buttontoggle.open span:before,
+.buttontoggle.open span:before {
+    transform: rotate(45deg) !important;
+    top: 0 !important;
+}
+
+#buttontoggle.open span:after,
+.buttontoggle.open span:after {
+    transform: rotate(-45deg) !important;
+    top: 0 !important;
+}
+
+/* Force visibility even when sidebar is open */
+.sidebar-open #buttontoggle,
+.sidebar-open .buttontoggle {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

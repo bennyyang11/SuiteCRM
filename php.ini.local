@@ -1,0 +1,28 @@
+; Optimized PHP Configuration for SuiteCRM Development
+memory_limit = 512M
+max_execution_time = 300
+max_input_vars = 3000
+upload_max_filesize = 32M
+post_max_size = 32M
+
+; Enable OPcache for better performance
+opcache.enable=1
+opcache.memory_consumption=256
+opcache.max_accelerated_files=20000
+opcache.validate_timestamps=0
+opcache.revalidate_freq=0
+
+; Reduce session overhead
+session.gc_maxlifetime = 3600
+session.gc_probability = 1
+session.gc_divisor = 100
+
+; Disable unnecessary features
+expose_php = Off
+display_errors = Off
+log_errors = On
+error_reporting = E_ERROR
+
+; Optimize file handling
+realpath_cache_size = 4096K
+realpath_cache_ttl = 600 

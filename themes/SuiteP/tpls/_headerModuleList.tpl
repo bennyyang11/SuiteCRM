@@ -670,6 +670,49 @@
         </div>
         <div class="desktop-bar">
             <ul id="toolbar" class="toolbar">
+                <!-- Manufacturing Quick Access -->
+                <li id="manufacturingtop" class="manufacturing dropdown nav navbar-nav manufacturingtop">
+                    <a class="dropdown-toggle manufacturing-nav-link" data-toggle="dropdown" aria-expanded="false" 
+                       style="color: white; background: linear-gradient(135deg, #667eea, #764ba2); padding: 8px 16px; border-radius: 4px; margin-right: 10px; transition: all 0.2s ease; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-industry"></i>
+                        Manufacturing
+                        <span class="suitepicon suitepicon-action-caret"></span>
+                    </a>
+                    <ul class="dropdown-menu manufacturing-dropdown" role="menu" style="min-width: 320px; border: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; right: 0; left: auto;">
+                        <li class="dropdown-header" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 20px; font-weight: 600; border-radius: 0; margin: 0;">
+                            <i class="fas fa-industry"></i> Manufacturing Distribution
+                        </li>
+                        <li>
+                            <a href="index.php?module=Manufacturing&action=ProductCatalog" style="padding: 15px 20px; display: flex; align-items: center; gap: 15px; transition: all 0.2s ease; text-decoration: none; color: #2d3748; border: none;">
+                                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-box" style="font-size: 16px;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 2px;">📱 Product Catalog</div>
+                                    <div style="font-size: 12px; color: #6c757d; line-height: 1.3;">Mobile catalog with client-specific pricing</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li style="border-top: 1px solid #f1f3f4; margin: 0;">
+                            <a href="index.php?module=Manufacturing&action=OrderDashboard" style="padding: 15px 20px; display: flex; align-items: center; gap: 15px; transition: all 0.2s ease; text-decoration: none; color: #2d3748; border: none;">
+                                <div style="background: linear-gradient(135deg, #28a745, #20c997); color: white; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-chart-line" style="font-size: 16px;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 15px; margin-bottom: 2px;">📊 Order Pipeline</div>
+                                    <div style="font-size: 12px; color: #6c757d; line-height: 1.3;">Kanban dashboard for order tracking</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li style="border-top: 1px solid #f1f3f4; margin: 0;">
+                            <div style="padding: 12px 20px; background: #f8f9fa; color: #6c757d; font-size: 11px; text-align: center;">
+                                <i class="fas fa-check-circle" style="color: #28a745; margin-right: 5px;"></i>
+                                Phase 1 + 2 Implementation Complete
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                
                 <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         {$APP.LBL_CREATE_BUTTON_LABEL}<span class="suitepicon suitepicon-action-caret"></span>

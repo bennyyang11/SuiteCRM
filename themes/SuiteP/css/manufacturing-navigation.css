@@ -1,0 +1,192 @@
+/**
+ * Manufacturing Navigation Styling
+ * Beautiful dropdown navigation for Manufacturing features
+ */
+
+/* Manufacturing Navigation Button */
+.manufacturing-nav-link {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+    margin-right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    text-decoration: none !important;
+}
+
+.manufacturing-nav-link:hover {
+    background: linear-gradient(135deg, #5a67d8, #6c5ce7) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Manufacturing Dropdown */
+.manufacturing-dropdown {
+    min-width: 320px !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    right: 0 !important;
+    left: auto !important;
+    background: white !important;
+}
+
+.manufacturing-dropdown .dropdown-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+    padding: 15px 20px !important;
+    font-weight: 600 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.manufacturing-dropdown li a {
+    padding: 15px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    color: #2d3748 !important;
+    border: none !important;
+    background: white !important;
+}
+
+.manufacturing-dropdown li a:hover {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+    transform: translateY(-1px) !important;
+    text-decoration: none !important;
+}
+
+.manufacturing-dropdown li a:focus {
+    background: #f8f9fa !important;
+    color: #2d3748 !important;
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+/* Manufacturing Link Icons */
+.manufacturing-dropdown .icon-container {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+.manufacturing-dropdown .catalog-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    color: white !important;
+}
+
+.manufacturing-dropdown .pipeline-icon {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    color: white !important;
+}
+
+/* Manufacturing Link Text */
+.manufacturing-dropdown .link-title {
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    margin-bottom: 2px !important;
+    color: #2d3748 !important;
+}
+
+.manufacturing-dropdown .link-description {
+    font-size: 12px !important;
+    color: #6c757d !important;
+    line-height: 1.3 !important;
+}
+
+/* Manufacturing Status Footer */
+.manufacturing-dropdown .status-footer {
+    padding: 12px 20px !important;
+    background: #f8f9fa !important;
+    color: #6c757d !important;
+    font-size: 11px !important;
+    text-align: center !important;
+    border-top: 1px solid #f1f3f4 !important;
+    margin: 0 !important;
+}
+
+.manufacturing-dropdown .status-icon {
+    color: #28a745 !important;
+    margin-right: 5px !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .manufacturing-nav-link {
+        padding: 6px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    .manufacturing-dropdown {
+        min-width: 280px !important;
+        right: -20px !important;
+    }
+    
+    .manufacturing-dropdown li a {
+        padding: 12px 15px !important;
+        gap: 12px !important;
+    }
+    
+    .manufacturing-dropdown .icon-container {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    
+    .manufacturing-dropdown .link-title {
+        font-size: 14px !important;
+    }
+}
+
+/* Animation for dropdown appearance */
+.manufacturing-dropdown {
+    animation: fadeInDown 0.3s ease-out !important;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure proper stacking */
+.manufacturingtop {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+.manufacturingtop .dropdown-menu {
+    z-index: 1001 !important;
+}
+
+/* Fix any conflicting styles */
+.manufacturingtop .dropdown-toggle::after {
+    margin-left: 8px !important;
+    color: white !important;
+}
+
+.manufacturingtop.open .dropdown-toggle {
+    background: linear-gradient(135deg, #5a67d8, #6c5ce7) !important;
+    color: white !important;
+}
