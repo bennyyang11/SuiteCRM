@@ -83,10 +83,12 @@
     <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/contrast-fixes.css">
     <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/sidebar-text-fix.css">
     <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/navigation-fix.css">
+    <link rel="stylesheet" type="text/css" href="themes/SuiteP/css/sidebar-headers-fix.css">
     <script type="text/javascript" src='{sugar_getjspath file="themes/SuiteP/js/jscolor.js"}'></script>
     <script type="text/javascript" src="themes/SuiteP/js/dashboard-themes-simple.js"></script>
     <script type="text/javascript" src="themes/SuiteP/js/dashlet-enhancements.js"></script>
     <script type="text/javascript" src="themes/SuiteP/js/sidebar-enhancement.js"></script>
+</script>
     <script type="text/javascript" src='{sugar_getjspath file="cache/include/javascript/sugar_field_grp.js"}'></script>
     <script type="text/javascript" src='{sugar_getjspath file="vendor/tinymce/tinymce/tinymce.min.js"}'></script>
 </head>

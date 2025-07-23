@@ -93,7 +93,9 @@ if (!class_exists('Tracker')) {
                 $path = SugarTemplateUtilities::getFilePath($path);
             }
             require_once($path);
-            if (empty($_SESSION['breadCrumbs'])) {
+            
+            // Always ensure BreadCrumbStack class is loaded before accessing session
+            if (empty($_SESSION['breadCrumbs']) || !($_SESSION['breadCrumbs'] instanceof BreadCrumbStack)) {
                 $breadCrumb = new BreadCrumbStack($user_id, $modules);
                 $_SESSION['breadCrumbs'] = $breadCrumb;
                 $GLOBALS['log']->info(string_format($GLOBALS['app_strings']['LBL_BREADCRUMBSTACK_CREATED'], array($user_id)));
