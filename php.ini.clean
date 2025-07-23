@@ -1,0 +1,29 @@
+; SuiteCRM Manufacturing Development Configuration
+; Suppress deprecation warnings while maintaining error logging
+
+; Error reporting - show errors but suppress deprecations
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+display_errors = 0
+display_startup_errors = 0
+log_errors = 1
+log_errors_max_len = 0
+
+; Performance optimizations
+memory_limit = 1024M
+max_execution_time = 300
+max_input_time = 300
+
+; Session configuration
+session.auto_start = 1
+session.save_path = tmp/sessions
+session.gc_maxlifetime = 3600
+
+; OPcache settings (disabled for development)
+opcache.enable = 0
+opcache.memory_consumption = 256
+opcache.max_accelerated_files = 10000
+
+; Security settings
+expose_php = 0
+allow_url_fopen = 1
+allow_url_include = 0

@@ -1,0 +1,34 @@
+{*
+ * Custom Manufacturing Dashboard for SuiteCRM
+ * Replaces default MySugar.tpl with modern manufacturing interface
+ *}
+
+{* Check if this is a manufacturing user or admin *}
+{if $current_user->is_admin || true}
+    {* Always show manufacturing dashboard for demo purposes *}
+    {include file="themes/SuiteP/tpls/manufacturing_dashboard.tpl"}
+{else}
+    {* Fallback to standard dashboard for non-manufacturing users *}
+    {include file="include/MySugar/tpls/MySugar.tpl"}
+{/if}
+
+{* Add manufacturing mode indicator *}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add manufacturing mode class to body
+    document.body.classList.add('manufacturing-mode');
+    
+    // Hide the original module tabs since we have our own navigation
+    const navbar = document.querySelector('.navbar-inverse');
+    if (navbar && document.querySelector('.manufacturing-nav')) {
+        navbar.style.display = 'none';
+    }
+    
+    // Adjust page content margin
+    const pageContent = document.getElementById('pagecontent');
+    if (pageContent) {
+        pageContent.style.marginTop = '0';
+        pageContent.style.paddingTop = '10px';
+    }
+});
+</script>

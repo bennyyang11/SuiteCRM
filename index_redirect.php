@@ -5,9 +5,9 @@
  */
 
 // Check if user is trying to access SuiteCRM directly
-if (isset($_GET['module']) || isset($_GET['action']) || isset($_POST['module']) || isset($_POST['action'])) {
-    // Pass through to actual SuiteCRM
-    include 'index_original.php';
+if (isset($_GET['module']) || isset($_GET['action'])) {
+    // Redirect to actual SuiteCRM
+    include 'index.php';
     exit;
 }
 

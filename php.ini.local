@@ -17,11 +17,11 @@ session.gc_maxlifetime = 3600
 session.gc_probability = 1
 session.gc_divisor = 100
 
-; Disable unnecessary features
+; Disable unnecessary features and suppress deprecation warnings
 expose_php = Off
 display_errors = Off
 log_errors = On
-error_reporting = E_ERROR
+error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT"
 
 ; Optimize file handling
 realpath_cache_size = 4096K

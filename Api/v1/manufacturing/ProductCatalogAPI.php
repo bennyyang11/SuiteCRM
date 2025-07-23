@@ -4,6 +4,10 @@
  * RESTful endpoints for mobile product catalog with client-specific pricing
  */
 
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
 require_once('include/MVC/Controller/SugarController.php');
 require_once('include/utils.php');
 require_once('modules/Accounts/Account.php');

@@ -1,0 +1,257 @@
+{*
+ * Manufacturing Distribution Navigation
+ * Modern navigation bar for manufacturing features
+ *}
+
+<!-- Manufacturing Navigation Bar -->
+<div id="manufacturing-nav" class="manufacturing-nav">
+    <div class="container-fluid">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <span class="nav-icon">🏭</span>
+                <span class="nav-title">Manufacturing Distribution</span>
+            </div>
+            <div class="nav-subtitle">Enterprise Legacy Modernization</div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="index.php?module=Home&action=index" class="nav-link {if $MODULE_TAB == 'Home'}active{/if}">
+                <span class="nav-link-icon">🏠</span>
+                <span class="nav-link-text">Dashboard</span>
+            </a>
+            
+            <a href="manufacturing_demo.php" class="nav-link manufacturing-demo-link">
+                <span class="nav-link-icon">📱</span>
+                <span class="nav-link-text">Mobile Demo</span>
+                <span class="nav-badge">NEW</span>
+            </a>
+            
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <span class="nav-link-icon">🛒</span>
+                    <span class="nav-link-text">Product Catalog</span>
+                    <span class="nav-caret">▼</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.php?module=Accounts&action=index">Browse Products</a></li>
+                    <li><a href="manufacturing_demo.php#feature1">Mobile Catalog</a></li>
+                    <li><a href="test_manufacturing_apis.php">API Testing</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <span class="nav-link-icon">📊</span>
+                    <span class="nav-link-text">Order Pipeline</span>
+                    <span class="nav-caret">▼</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.php?module=Opportunities&action=index">Orders & Quotes</a></li>
+                    <li><a href="manufacturing_demo.php#feature2">Pipeline Dashboard</a></li>
+                    <li><a href="#" onclick="showPipelineModal()">Quick Status</a></li>
+                </ul>
+            </div>
+            
+            <a href="clean_demo.php" class="nav-link">
+                <span class="nav-link-icon">🧹</span>
+                <span class="nav-link-text">Clean Demo</span>
+            </a>
+        </div>
+        
+        <div class="nav-user">
+            {if $AUTHENTICATED}
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle user-menu" data-toggle="dropdown">
+                        <span class="nav-link-icon">👤</span>
+                        <span class="nav-link-text">{$CURRENT_USER_NAME}</span>
+                        <span class="nav-caret">▼</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="index.php?module=Users&action=EditView&record={$CURRENT_USER_ID}">Profile</a></li>
+                        <li><a href="index.php?module=Administration&action=index">Admin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="index.php?action=Logout">Logout</a></li>
+                    </ul>
+                </div>
+            {/if}
+        </div>
+    </div>
+</div>
+
+<style>
+.manufacturing-nav {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border-bottom: 3px solid #3498db;
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.manufacturing-nav .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.nav-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.nav-subtitle {
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-left: 35px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.9em;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background: rgba(52, 152, 219, 0.3);
+    color: white;
+}
+
+.nav-link-icon {
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+.nav-badge {
+    background: #e74c3c;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.manufacturing-demo-link {
+    background: rgba(46, 204, 113, 0.2);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.manufacturing-demo-link:hover {
+    background: rgba(46, 204, 113, 0.3);
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-caret {
+    margin-left: 5px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.nav-dropdown:hover .nav-caret {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown .dropdown-menu {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    min-width: 180px;
+}
+
+.nav-dropdown .dropdown-menu li a {
+    color: #2c3e50;
+    padding: 8px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.nav-dropdown .dropdown-menu li a:hover {
+    background: #f8f9fa;
+    color: #3498db;
+}
+
+.nav-user .user-menu {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+    .manufacturing-nav .container-fluid {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-link-text {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 8px 10px;
+    }
+}
+</style>
+
+<script>
+function showPipelineModal() {
+    alert('Pipeline Status:\n\n📋 Quotes: 3 pending\n✅ Approved: 2 ready\n🏭 Production: 2 active\n🚚 Shipped: 1 today\n\nTotal Pipeline Value: $145,000');
+}
+
+// Add smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href*="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href.includes('#') && href.includes('manufacturing_demo.php')) {
+                // Let the link navigate normally for external page anchors
+                return;
+            }
+        });
+    });
+});
+</script>

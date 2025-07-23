@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="description" content="Manufacturing Product Catalog - Mobile-first product browsing and quote building">
+    
+    <title>Product Catalog - Manufacturing</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="dist/main.css" as="style">
+    <link rel="preload" href="dist/main.js" as="script">
+    
+    <!-- Critical CSS (inline for performance) -->
+    <style>
+        /* Critical above-the-fold styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        .loading-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .loading-subtext {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Hide loading screen once app loads */
+        .app-loaded .loading-container {
+            display: none;
+        }
+        
+        /* PWA styles */
+        .pwa-install-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #3B82F6;
+            color: white;
+            padding: 16px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .pwa-install-banner.show {
+            display: flex;
+        }
+        
+        .pwa-install-text {
+            flex: 1;
+            margin-right: 16px;
+        }
+        
+        .pwa-install-button {
+            background: white;
+            color: #3B82F6;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+        
+        .pwa-dismiss-button {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Offline indicator */
+        .offline-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #EF4444;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .offline .offline-indicator {
+            display: block;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .loading-text {
+                font-size: 16px;
+            }
+            
+            .pwa-install-banner {
+                padding: 12px;
+            }
+            
+            .pwa-install-text {
+                font-size: 14px;
+            }
+            
+            .pwa-install-button,
+            .pwa-dismiss-button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Product Catalog">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+</head>
+<body>
+    <!-- Offline Indicator -->
+    <div class="offline-indicator">
+        You're currently offline. Some features may not be available.
+    </div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-container" id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Product Catalog</div>
+        <div class="loading-subtext">Please wait while we prepare your manufacturing tools...</div>
+    </div>
+    
+    <!-- PWA Install Banner -->
+    <div class="pwa-install-banner" id="pwa-banner">
+        <div class="pwa-install-text">
+            <strong>Install Product Catalog</strong><br>
+            Add to your home screen for a better experience
+        </div>
+        <button class="pwa-install-button" id="pwa-install">Install</button>
+        <button class="pwa-dismiss-button" id="pwa-dismiss">Later</button>
+    </div>
+    
+    <!-- React App Container -->
+    <div id="manufacturing-product-catalog-root"></div>
+    
+    <!-- Error Boundary Fallback -->
+    <div id="error-fallback" style="display: none; padding: 40px; text-align: center; background: #f9fafb; min-height: 100vh;">
+        <div style="max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+            <h1 style="color: #374151; margin-bottom: 16px;">Something went wrong</h1>
+            <p style="color: #6b7280; margin-bottom: 24px;">
+                The Product Catalog encountered an unexpected error. Please try refreshing the page.
+            </p>
+            <button onclick="window.location.reload()" style="
+                background: #3B82F6;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-size: 16px;
+                cursor: pointer;
+                margin-right: 12px;
+            ">
+                Refresh Page
+            </button>
+            <button onclick="window.history.back()" style="
+                background: transparent;
+                color: #374151;
+                border: 1px solid #d1d5db;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-size: 16px;
+                cursor: pointer;
+            ">
+                Go Back
+            </button>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log('Page Load Performance:', {
+                        loadTime: perfData.loadEventEnd - perfData.navigationStart,
+                        domContentLoaded: perfData.domContentLoadedEventEnd - perfData.navigationStart,
+                        firstPaint: performance.getEntriesByType('paint')[0]?.startTime || 0
+                    });
+                }, 0);
+            });
+        }
+        
+        // PWA Install Banner
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install banner after 30 seconds if not dismissed
+            setTimeout(() => {
+                if (deferredPrompt && !localStorage.getItem('pwa-dismissed')) {
+                    document.getElementById('pwa-banner').classList.add('show');
+                }
+            }, 30000);
+        });
+        
+        document.getElementById('pwa-install').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('PWA install outcome:', outcome);
+                deferredPrompt = null;
+                document.getElementById('pwa-banner').classList.remove('show');
+            }
+        });
+        
+        document.getElementById('pwa-dismiss').addEventListener('click', () => {
+            document.getElementById('pwa-banner').classList.remove('show');
+            localStorage.setItem('pwa-dismissed', 'true');
+        });
+        
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+            
+            // Show error fallback if React app fails to load
+            setTimeout(() => {
+                const appRoot = document.getElementById('manufacturing-product-catalog-root');
+                if (!appRoot.hasChildNodes()) {
+                    document.getElementById('error-fallback').style.display = 'block';
+                    document.getElementById('loading-screen').style.display = 'none';
+                }
+            }, 5000);
+        });
+        
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+        
+        // Network status
+        function updateOnlineStatus() {
+            document.body.classList.toggle('offline', !navigator.onLine);
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+        
+        // App load detection
+        function markAppAsLoaded() {
+            document.body.classList.add('app-loaded');
+            document.getElementById('loading-screen').style.display = 'none';
+        }
+        
+        // Auto-hide loading screen after 10 seconds
+        setTimeout(markAppAsLoaded, 10000);
+        
+        // Expose function for React app to call when loaded
+        window.manufacturingAppLoaded = markAppAsLoaded;
+        
+        // Touch handling for iOS
+        document.addEventListener('touchstart', function() {}, { passive: true });
+        
+        // Prevent zoom on iOS form inputs
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+    
+    <!-- React App Bundle -->
+    <script type="module" src="src/index.tsx"></script>
+    
+    <!-- Fallback for older browsers -->
+    <script nomodule>
+        document.getElementById('error-fallback').style.display = 'block';
+        document.getElementById('loading-screen').style.display = 'none';
+        document.querySelector('#error-fallback h1').textContent = 'Browser Not Supported';
+        document.querySelector('#error-fallback p').textContent = 'This application requires a modern browser. Please update your browser or use Chrome, Firefox, Safari, or Edge.';
+    </script>
+</body>
+</html>
