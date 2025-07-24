@@ -1,0 +1,178 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables for Dynamic Theming */
+:root {
+  --color-brand-primary: 14 165 233;
+  --color-brand-secondary: 71 85 105;
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-error: 239 68 68;
+  --color-surface: 248 250 252;
+  --color-on-surface: 15 23 42;
+}
+
+[data-theme="dark"] {
+  --color-surface: 15 23 42;
+  --color-on-surface: 248 250 252;
+}
+
+/* Base Styles */
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom Components */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800;
+  }
+
+  .btn-secondary {
+    @apply btn bg-manufacturing-200 text-manufacturing-800 hover:bg-manufacturing-300 active:bg-manufacturing-400;
+  }
+
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 active:bg-success-800;
+  }
+
+  .btn-warning {
+    @apply btn bg-warning-600 text-white hover:bg-warning-700 active:bg-warning-800;
+  }
+
+  .btn-error {
+    @apply btn bg-error-600 text-white hover:bg-error-700 active:bg-error-800;
+  }
+
+  .card {
+    @apply rounded-lg border bg-white p-6 shadow-card;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-manufacturing-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-manufacturing-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  /* Mobile-First Responsive Grid */
+  .grid-responsive {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Manufacturing-Specific Components */
+  .status-badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .status-active {
+    @apply status-badge bg-success-100 text-success-800;
+  }
+
+  .status-pending {
+    @apply status-badge bg-warning-100 text-warning-800;
+  }
+
+  .status-inactive {
+    @apply status-badge bg-manufacturing-100 text-manufacturing-800;
+  }
+
+  .status-error {
+    @apply status-badge bg-error-100 text-error-800;
+  }
+
+  /* Product Card Styles */
+  .product-card {
+    @apply card hover:shadow-soft transform transition-all duration-200 hover:-translate-y-1;
+  }
+
+  .product-card:hover {
+    @apply ring-2 ring-primary-200;
+  }
+
+  /* Pipeline Stage Styles */
+  .pipeline-stage {
+    @apply rounded-lg border-2 border-dashed border-manufacturing-300 p-4 transition-colors;
+  }
+
+  .pipeline-stage.droppable {
+    @apply border-primary-400 bg-primary-50;
+  }
+
+  /* Loading States */
+  .skeleton {
+    @apply animate-pulse bg-manufacturing-200 rounded;
+  }
+
+  /* Focus Management */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  /* Print Styles */
+  @media print {
+    .no-print {
+      @apply hidden;
+    }
+    
+    .print-break {
+      page-break-after: always;
+    }
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Manufacturing-specific utilities */
+  .manufacturing-gradient {
+    @apply bg-gradient-to-r from-manufacturing-600 to-manufacturing-800;
+  }
+
+  .primary-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700;
+  }
+
+  /* Mobile touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card {
+      @apply border-2 border-manufacturing-800;
+    }
+    
+    .btn {
+      @apply border-2;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -124,6 +124,9 @@ $app->group('', function () use ($app) {
             )
             ->add($paramsMiddlewareFactory->bind(Param\DeleteRelationshipParams::class));
 
+        // Manufacturing API routes
+        include_once __DIR__ . '/../Manufacturing/Config/routes.php';
+
         // add custom routes
         $app->group('/custom', function () use ($app) {
             $app = CustomLoader::loadCustomRoutes($app);

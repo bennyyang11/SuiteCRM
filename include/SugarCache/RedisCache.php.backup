@@ -1,0 +1,515 @@
+<?php
+
+require_once 'include/SugarCache/SugarCacheAbstract.php';
+
+/**
+ * Redis Cache Implementation for SuiteCRM
+ * Provides high-performance caching with Redis backend
+ */
+class SugarCacheRedis extends SugarCacheAbstract
+{
+    private $redis = null;
+    private $connected = false;
+    private $connectionPool = [];
+    private $maxPoolSize = 10;
+    
+    // Cache configuration
+    private $defaultTTL = 3600; // 1 hour
+    private $keyPrefix = 'suitecrm:';
+    
+    // Performance metrics
+    private $stats = [
+        'hits' => 0,
+        'misses' => 0,
+        'sets' => 0,
+        'deletes' => 0,
+        'errors' => 0
+    ];
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->connect();
+    }
+
+    /**
+     * Establish Redis connection with failover support
+     */
+    private function connect(): bool
+    {
+        if ($this->connected && $this->redis && $this->redis->ping()) {
+            return true;
+        }
+
+        $config = $this->getRedisConfig();
+        
+        try {
+            $this->redis = new Redis();
+            
+            // Configure connection options
+            $this->redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_JSON);
+            $this->redis->setOption(Redis::OPT_COMPRESSION, Redis::COMPRESSION_LZ4);
+            $this->redis->setOption(Redis::OPT_READ_TIMEOUT, 2);
+            
+            // Primary connection
+            $connected = $this->redis->connect(
+                $config['host'], 
+                $config['port'], 
+                $config['timeout'] ?? 2
+            );
+            
+            if (!$connected) {
+                throw new Exception("Failed to connect to Redis server");
+            }
+            
+            // Authentication if required
+            if (!empty($config['password'])) {
+                $this->redis->auth($config['password']);
+            }
+            
+            // Select database
+            if (isset($config['database'])) {
+                $this->redis->select($config['database']);
+            }
+            
+            $this->connected = true;
+            $this->logEvent('redis_connected', 'info');
+            
+            return true;
+            
+        } catch (Exception $e) {
+            $this->logEvent("Redis connection failed: " . $e->getMessage(), 'error');
+            $this->connected = false;
+            
+            // Try fallback servers
+            return $this->tryFallbackServers($config);
+        }
+    }
+
+    /**
+     * Try connecting to fallback Redis servers
+     */
+    private function tryFallbackServers(array $config): bool
+    {
+        $fallbacks = $config['fallback_servers'] ?? [];
+        
+        foreach ($fallbacks as $server) {
+            try {
+                $this->redis = new Redis();
+                $this->redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_JSON);
+                
+                if ($this->redis->connect($server['host'], $server['port'], 2)) {
+                    if (!empty($server['password'])) {
+                        $this->redis->auth($server['password']);
+                    }
+                    
+                    $this->connected = true;
+                    $this->logEvent("Connected to fallback Redis server: {$server['host']}", 'info');
+                    return true;
+                }
+            } catch (Exception $e) {
+                continue;
+            }
+        }
+        
+        return false;
+    }
+
+    /**
+     * Get Redis configuration
+     */
+    private function getRedisConfig(): array
+    {
+        global $sugar_config;
+        
+        return $sugar_config['redis'] ?? [
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'timeout' => 2,
+            'database' => 0,
+            'password' => '',
+            'fallback_servers' => []
+        ];
+    }
+
+    /**
+     * Set cache value with TTL
+     */
+    public function set($key, $value, $ttl = null): bool
+    {
+        if (!$this->isConnected()) {
+            return false;
+        }
+
+        try {
+            $fullKey = $this->keyPrefix . $key;
+            $ttl = $ttl ?? $this->defaultTTL;
+            
+            $result = $this->redis->setex($fullKey, $ttl, $value);
+            
+            if ($result) {
+                $this->stats['sets']++;
+                $this->logCacheOperation('set', $key, true);
+            }
+            
+            return $result;
+            
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->logEvent("Redis SET error: " . $e->getMessage(), 'error');
+            return false;
+        }
+    }
+
+    /**
+     * Get cache value
+     */
+    public function get($key)
+    {
+        if (!$this->isConnected()) {
+            return null;
+        }
+
+        try {
+            $fullKey = $this->keyPrefix . $key;
+            $value = $this->redis->get($fullKey);
+            
+            if ($value !== false) {
+                $this->stats['hits']++;
+                $this->logCacheOperation('get', $key, true);
+                return $value;
+            } else {
+                $this->stats['misses']++;
+                $this->logCacheOperation('get', $key, false);
+                return null;
+            }
+            
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->stats['misses']++;
+            $this->logEvent("Redis GET error: " . $e->getMessage(), 'error');
+            return null;
+        }
+    }
+
+    /**
+     * Delete cache value
+     */
+    public function delete($key): bool
+    {
+        if (!$this->isConnected()) {
+            return false;
+        }
+
+        try {
+            $fullKey = $this->keyPrefix . $key;
+            $result = $this->redis->del($fullKey);
+            
+            if ($result) {
+                $this->stats['deletes']++;
+                $this->logCacheOperation('delete', $key, true);
+            }
+            
+            return $result > 0;
+            
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->logEvent("Redis DELETE error: " . $e->getMessage(), 'error');
+            return false;
+        }
+    }
+
+    /**
+     * Check if key exists
+     */
+    public function exists($key): bool
+    {
+        if (!$this->isConnected()) {
+            return false;
+        }
+
+        try {
+            $fullKey = $this->keyPrefix . $key;
+            return $this->redis->exists($fullKey) > 0;
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            return false;
+        }
+    }
+
+    /**
+     * Set multiple values at once
+     */
+    public function setMultiple(array $values, $ttl = null): bool
+    {
+        if (!$this->isConnected()) {
+            return false;
+        }
+
+        try {
+            $pipe = $this->redis->multi(Redis::PIPELINE);
+            $ttl = $ttl ?? $this->defaultTTL;
+            
+            foreach ($values as $key => $value) {
+                $fullKey = $this->keyPrefix . $key;
+                $pipe->setex($fullKey, $ttl, $value);
+            }
+            
+            $results = $pipe->exec();
+            $success = !in_array(false, $results, true);
+            
+            if ($success) {
+                $this->stats['sets'] += count($values);
+            }
+            
+            return $success;
+            
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->logEvent("Redis MSET error: " . $e->getMessage(), 'error');
+            return false;
+        }
+    }
+
+    /**
+     * Get multiple values at once
+     */
+    public function getMultiple(array $keys): array
+    {
+        if (!$this->isConnected()) {
+            return [];
+        }
+
+        try {
+            $fullKeys = array_map(function($key) {
+                return $this->keyPrefix . $key;
+            }, $keys);
+            
+            $values = $this->redis->mget($fullKeys);
+            $result = [];
+            
+            for ($i = 0; $i < count($keys); $i++) {
+                if ($values[$i] !== false) {
+                    $result[$keys[$i]] = $values[$i];
+                    $this->stats['hits']++;
+                } else {
+                    $this->stats['misses']++;
+                }
+            }
+            
+            return $result;
+            
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->stats['misses'] += count($keys);
+            $this->logEvent("Redis MGET error: " . $e->getMessage(), 'error');
+            return [];
+        }
+    }
+
+    /**
+     * Increment counter value
+     */
+    public function increment($key, $step = 1): int
+    {
+        if (!$this->isConnected()) {
+            return 0;
+        }
+
+        try {
+            $fullKey = $this->keyPrefix . $key;
+            return $this->redis->incrBy($fullKey, $step);
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            return 0;
+        }
+    }
+
+    /**
+     * Clear all cache entries with prefix
+     */
+    public function flush(): bool
+    {
+        if (!$this->isConnected()) {
+            return false;
+        }
+
+        try {
+            $keys = $this->redis->keys($this->keyPrefix . '*');
+            if (!empty($keys)) {
+                return $this->redis->del($keys) > 0;
+            }
+            return true;
+        } catch (Exception $e) {
+            $this->stats['errors']++;
+            $this->logEvent("Redis FLUSH error: " . $e->getMessage(), 'error');
+            return false;
+        }
+    }
+
+    /**
+     * Get cache statistics
+     */
+    public function getStats(): array
+    {
+        $cacheStats = $this->stats;
+        
+        if ($this->isConnected()) {
+            try {
+                $info = $this->redis->info();
+                $cacheStats['redis_info'] = [
+                    'used_memory' => $info['used_memory_human'] ?? 'unknown',
+                    'connected_clients' => $info['connected_clients'] ?? 0,
+                    'total_commands_processed' => $info['total_commands_processed'] ?? 0,
+                    'keyspace_hits' => $info['keyspace_hits'] ?? 0,
+                    'keyspace_misses' => $info['keyspace_misses'] ?? 0,
+                ];
+            } catch (Exception $e) {
+                // Ignore info errors
+            }
+        }
+        
+        // Calculate hit rate
+        $total = $cacheStats['hits'] + $cacheStats['misses'];
+        $cacheStats['hit_rate'] = $total > 0 ? round(($cacheStats['hits'] / $total) * 100, 2) : 0;
+        
+        return $cacheStats;
+    }
+
+    /**
+     * Check if Redis is connected and available
+     */
+    public function isConnected(): bool
+    {
+        if (!$this->connected || !$this->redis) {
+            return $this->connect();
+        }
+
+        try {
+            return $this->redis->ping() === '+PONG';
+        } catch (Exception $e) {
+            $this->connected = false;
+            return $this->connect();
+        }
+    }
+
+    /**
+     * Get connection from pool (for advanced usage)
+     */
+    public function getConnection(): ?Redis
+    {
+        return $this->isConnected() ? $this->redis : null;
+    }
+
+    /**
+     * Log cache operations for monitoring
+     */
+    private function logCacheOperation(string $operation, string $key, bool $success): void
+    {
+        if ($GLOBALS['log']->getLevel() === 'debug') {
+            $GLOBALS['log']->debug("Redis {$operation}: {$key} - " . ($success ? 'HIT' : 'MISS'));
+        }
+    }
+
+    /**
+     * Log events
+     */
+    private function logEvent(string $message, string $level = 'info'): void
+    {
+        if (isset($GLOBALS['log'])) {
+            $GLOBALS['log']->$level("RedisCache: {$message}");
+        }
+    }
+
+    /**
+     * Cleanup on destruction
+     */
+    public function __destruct()
+    {
+        if ($this->redis && $this->connected) {
+            try {
+                $this->redis->close();
+            } catch (Exception $e) {
+                // Ignore close errors
+            }
+        }
+    }
+
+    /**
+     * Session management methods
+     */
+    
+    /**
+     * Store session data
+     */
+    public function setSession(string $sessionId, array $data, int $ttl = 1800): bool
+    {
+        return $this->set("session:{$sessionId}", json_encode($data), $ttl);
+    }
+
+    /**
+     * Get session data
+     */
+    public function getSession(string $sessionId): ?array
+    {
+        $data = $this->get("session:{$sessionId}");
+        return $data ? json_decode($data, true) : null;
+    }
+
+    /**
+     * Delete session
+     */
+    public function deleteSession(string $sessionId): bool
+    {
+        return $this->delete("session:{$sessionId}");
+    }
+
+    /**
+     * Advanced caching patterns
+     */
+    
+    /**
+     * Cache with lock to prevent stampede
+     */
+    public function getWithLock(string $key, callable $callback, int $ttl = null, int $lockTtl = 30)
+    {
+        $value = $this->get($key);
+        if ($value !== null) {
+            return $value;
+        }
+
+        $lockKey = "lock:{$key}";
+        $lockValue = uniqid();
+        
+        // Try to acquire lock
+        if ($this->redis->set($lockKey, $lockValue, ['nx', 'ex' => $lockTtl])) {
+            try {
+                // Double-check cache after acquiring lock
+                $value = $this->get($key);
+                if ($value !== null) {
+                    return $value;
+                }
+                
+                // Generate new value
+                $value = $callback();
+                $this->set($key, $value, $ttl);
+                
+                return $value;
+            } finally {
+                // Release lock
+                $script = '
+                    if redis.call("get", KEYS[1]) == ARGV[1] then
+                        return redis.call("del", KEYS[1])
+                    else
+                        return 0
+                    end
+                ';
+                $this->redis->eval($script, [$lockKey, $lockValue], 1);
+            }
+        }
+        
+        // If couldn't acquire lock, wait briefly and try cache again
+        usleep(50000); // 50ms
+        return $this->get($key);
+    }
+}

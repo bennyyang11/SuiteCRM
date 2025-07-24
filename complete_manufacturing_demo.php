@@ -7,7 +7,7 @@ require_once('include/entryPoint.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Manufacturing Demo - Features 1, 2, 3, 4 & 5</title>
+    <title>Complete Manufacturing Demo - All 6 Features</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
@@ -77,7 +77,7 @@ require_once('include/entryPoint.php');
             <a href="index.php?module=Home&action=index" class="back-link">← Back to SuiteCRM</a>
             <div class="header-center">
                 <h1>🏭 Complete Manufacturing Distribution Demo</h1>
-                <p>Features 1, 2, 3, 4 & 5 - Product Catalog + Order Pipeline + Inventory + Quote Builder + Advanced Search</p>
+                <p>All 6 Features - Product Catalog + Order Pipeline + Inventory + Quote Builder + Advanced Search + Role Management</p>
             </div>
             <div class="header-actions">
                 <a href="inventory_components_demo.php" class="header-btn">Advanced Inventory</a>
@@ -503,6 +503,127 @@ require_once('include/entryPoint.php');
             </div>
         </div>
 
+        <!-- Feature 6: User Role Management & Permissions -->
+        <div class="feature-section">
+            <div class="feature-header">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Feature 6: User Role Management & Permissions</div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">User Roles</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                    <div class="stat-number">256</div>
+                    <div class="stat-label">Permissions</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #27ae60, #229954);">
+                    <div class="stat-number">JWT</div>
+                    <div class="stat-label">Auth System</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">🔐 Role-Based Access Control</h4>
+                    <ul style="margin-bottom: 15px;">
+                        <li>✅ Sales Rep: Product catalog, quotes, own clients</li>
+                        <li>✅ Manager: Team performance, all quotes, inventory</li>
+                        <li>✅ Client: Order tracking, reorder, invoice history</li>
+                        <li>✅ Admin: User management, system configuration</li>
+                    </ul>
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                        <h5 style="color: #1976d2; margin-bottom: 10px;">🎯 Security Features</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #27ae60;">JWT</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Token Auth</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #3498db;">RBAC</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Permission Matrix</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">🏪 Client Self-Service Portal</h4>
+                    <ul style="margin-bottom: 15px;">
+                        <li>✅ Secure client login system</li>
+                        <li>✅ Order history and tracking interface</li>
+                        <li>✅ One-click reorder functionality</li>
+                        <li>✅ Invoice download system</li>
+                        <li>✅ Shipment tracking integration</li>
+                    </ul>
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                        <h5 style="color: #856404; margin-bottom: 10px;">⚡ User Experience</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center;">
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #f39c12;">SSO</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Single Sign-On</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5em; font-weight: bold; color: #e67e22;">2FA</div>
+                                <div style="font-size: 0.9em; color: #7f8c8d;">Two Factor Auth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h5 style="color: #155724; margin-bottom: 10px;">👤 Sales Rep Dashboard</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">Mobile-optimized interface for field sales with client-specific data access.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Mobile First</span>
+                        <span style="background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Territory Based</span>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #007bff;">
+                    <h5 style="color: #0056b3; margin-bottom: 10px;">📊 Manager Analytics</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">Comprehensive team performance metrics and business intelligence dashboard.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #d1ecf1; color: #0c5460; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Team Metrics</span>
+                        <span style="background: #d1ecf1; color: #0c5460; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Reports</span>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #fd7e14;">
+                    <h5 style="color: #fd7e14; margin-bottom: 10px;">🏪 Client Portal</h5>
+                    <p style="color: #6c757d; margin-bottom: 15px;">Self-service portal for clients to track orders, download invoices, and reorder.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="background: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">Self Service</span>
+                        <span style="background: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">24/7 Access</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px;">
+                <h4 style="color: white; margin-bottom: 15px;">🔐 Experience Role-Based Security!</h4>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 20px;">Test the complete user management system with different roles and permissions.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="test_feature6_role_management_demo.php" class="btn" style="background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        👥 Role Demo
+                    </a>
+                    <a href="test_feature6_security_comprehensive.php" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        🔒 Security Test
+                    </a>
+                    <a href="complete_auth_results.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                        📋 Auth Report
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Summary -->
         <div class="feature-section">
             <div class="feature-header">
@@ -511,7 +632,7 @@ require_once('include/entryPoint.php');
             </div>
             
             <div style="background: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; padding: 20px;">
-                <h4 style="color: #155724; margin-bottom: 15px;">🎉 All Five Features Successfully Implemented:</h4>
+                <h4 style="color: #155724; margin-bottom: 15px;">🎉 All Six Features Successfully Implemented:</h4>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
                     <div>
                         <h5 style="color: #155724;">📱 Feature 1: Product Catalog</h5>
@@ -551,6 +672,14 @@ require_once('include/entryPoint.php');
                             <li>Google-like search engine</li>
                             <li>Intelligent autocomplete</li>
                             <li>Sub-second response times</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: #155724;">👥 Feature 6: Role Management</h5>
+                        <ul style="margin: 10px 0; padding-left: 20px; color: #155724;">
+                            <li>Role-based access control</li>
+                            <li>JWT authentication system</li>
+                            <li>Client self-service portal</li>
                         </ul>
                     </div>
                 </div>
