@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+README.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+docs/
+*.md
+
+# Logs
+*.log
+logs/
+
+# Node modules (if any)
+node_modules/
+npm-debug.log*
+
+# Cache and temporary files
+cache/logs/
+tmp/
+.tmp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Tests
+tests/
+phpunit.xml 

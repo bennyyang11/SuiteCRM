@@ -198,7 +198,7 @@ ob_end_clean();
             <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
                 <h3 style="color: #1f2937; margin: 0 0 20px 0;">🎯 Project Status: COMPLETE</h3>
                 <p style="color: #6b7280; margin: 0 0 25px 0;">All 6 features + technical implementation finished. 80/100 points achieved!</p>
-                <a href="/manufacturing_demo.php" class="btn btn-primary">Complete Demo</a>
+                <a href="/complete_manufacturing_demo_fixed.php" class="btn btn-primary">Complete Demo</a>
                 <a href="/verify_features_working.php" class="btn btn-success">Test All Features</a>
                 <a href="?action=logout" class="btn btn-gray">Logout</a>
             </div>
@@ -245,7 +245,7 @@ ob_end_clean();
             
             <div class="login-links">
                 <a href="/">Manufacturing Interface</a> |
-                <a href="/manufacturing_demo.php">View Demo</a> |
+                <a href="/complete_manufacturing_demo_fixed.php">View Demo</a> |
                 <a href="/verify_features_working.php">Test Features</a>
             </div>
         </div>
@@ -307,7 +307,7 @@ ob_end_clean();
             
             <div class="footer">
                 <h3>🎯 Project Complete: 80/100 Points Achieved</h3>
-                <a href="/manufacturing_demo.php" class="btn btn-primary">Complete Demo</a>
+                <a href="/complete_manufacturing_demo_fixed.php" class="btn btn-primary">Complete Demo</a>
                 <a href="?module=Home&action=index" class="btn btn-gray">Access SuiteCRM</a>
                 <a href="/verify_features_working.php" class="btn btn-success">Test All Features</a>
             </div>

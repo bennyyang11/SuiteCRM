@@ -1,6 +1,12 @@
 <?php
-define('sugarEntry', true);
-require_once('include/entryPoint.php');
+/**
+ * Manufacturing Demo - Fixed Version
+ * Redirects to working version without database dependencies
+ */
+
+// Redirect to the fixed version that doesn't require SuiteCRM database
+header('Location: complete_manufacturing_demo_fixed.php');
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">

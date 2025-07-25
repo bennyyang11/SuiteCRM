@@ -4,8 +4,8 @@
  * Feature 4: Manufacturing Quote Builder System
  */
 
-// Demo mode - simplified for testing
-session_start();
+// Initialize session properly
+require_once 'session_init.php';
 $demo_mode = true;
 
 // Get client information for pricing (demo data)

@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: suitecrm-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: suitecrm
+      MYSQL_USER: suitecrm_user
+      MYSQL_PASSWORD: suitecrm_password
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_general_ci
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    networks:
+      - suitecrm-network
+
+  # SuiteCRM Application
+  suitecrm:
+    build: .
+    container_name: suitecrm-app
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./upload:/var/www/html/upload
+      - ./cache:/var/www/html/cache
+      - ./tmp:/var/www/html/tmp
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=suitecrm
+      - DB_USER=suitecrm_user
+      - DB_PASSWORD=suitecrm_password
+      - DB_PORT=3306
+      - SITE_URL=http://localhost:8080
+    networks:
+      - suitecrm-network
+
+  # Redis for caching (optional but recommended for performance)
+  redis:
+    image: redis:7-alpine
+    container_name: suitecrm-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - suitecrm-network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  suitecrm-network:
+    driver: bridge 
