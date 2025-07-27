@@ -66,7 +66,7 @@
                 <p>Client-Specific Pricing & Mobile-Responsive Interface</p>
             </div>
             <div>
-                <a href="complete_manufacturing_demo.php" class="back-link">View All Features</a>
+                <a href="/" class="back-link">← Dashboard</a>
             </div>
         </div>
     </div>

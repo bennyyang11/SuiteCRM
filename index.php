@@ -68,7 +68,7 @@ ob_end_clean();
         .dashboard-header { background: linear-gradient(135deg, #1f2937, #374151); color: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; text-align: center; }
         .dashboard-header h1 { margin: 0 0 10px 0; font-size: 2.2rem; }
         .dashboard-header p { margin: 0; opacity: 0.9; }
-        .status-badge { background: rgba(34, 197, 94, 0.2); color: #059669; padding: 8px 16px; border-radius: 20px; display: inline-block; margin-top: 15px; font-size: 0.9rem; font-weight: 600; }
+
         
         /* KPI Metrics Bar */
         .kpi-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
@@ -385,7 +385,6 @@ ob_end_clean();
             <div class="dashboard-header">
                 <h1>🏭 SuiteCRM Manufacturing Dashboard</h1>
                 <p>Welcome back, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</p>
-                <div class="status-badge">✅ All Features Complete | 🏆 80/100 Points Achieved</div>
             </div>
             
             <!-- Executive KPI Metrics Bar -->
@@ -580,10 +579,6 @@ ob_end_clean();
             </div>
             
             <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
-                <h3 style="color: #1f2937; margin: 0 0 20px 0;">🎯 Project Status: COMPLETE</h3>
-                <p style="color: #6b7280; margin: 0 0 25px 0;">All 6 features + technical implementation finished. 80/100 points achieved!</p>
-                <a href="/complete_manufacturing_demo_fixed.php" class="btn btn-primary">Complete Demo</a>
-                <a href="/verify_features_working.php" class="btn btn-success">Test All Features</a>
                 <a href="?action=logout" class="btn btn-gray">Logout</a>
             </div>
         </div>
@@ -598,9 +593,7 @@ ob_end_clean();
                 <p>Enterprise Distribution Platform</p>
             </div>
             
-            <div class="status-success">
-                ✅ <strong>Project Complete:</strong> All 6 Features + Technical Implementation Ready!
-            </div>
+
             
             <?php if (!empty($loginError)): ?>
             <div class="status-error">
@@ -628,9 +621,7 @@ ob_end_clean();
             </form>
             
             <div class="login-links">
-                <a href="/">Manufacturing Interface</a> |
-                <a href="/complete_manufacturing_demo_fixed.php">View Demo</a> |
-                <a href="/verify_features_working.php">Test Features</a>
+                <a href="/">Manufacturing Interface</a>
             </div>
         </div>
     </div>

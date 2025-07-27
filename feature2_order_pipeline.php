@@ -80,7 +80,7 @@
                 <p>7-Stage Pipeline from Quote to Delivery</p>
             </div>
             <div>
-                <a href="complete_manufacturing_demo.php" class="back-link">View All Features</a>
+                <a href="/" class="back-link">← Dashboard</a>
             </div>
         </div>
     </div>

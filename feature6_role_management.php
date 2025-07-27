@@ -187,7 +187,7 @@ if (isset($_POST['switch_role'])) {
 <body>
     <div class="header">
         <div class="header-nav">
-            <a href="complete_manufacturing_demo_fixed.php" class="back-link">← Back to Demo</a>
+            <a href="/" class="back-link">← Back to Dashboard</a>
             <div class="header-center">
                 <h1>👥 Feature 6: Role Management & Permissions</h1>
                 <p>Comprehensive RBAC System with JWT Authentication</p>

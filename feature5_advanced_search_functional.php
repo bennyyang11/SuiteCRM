@@ -115,7 +115,7 @@ $isLoggedIn = !empty($_SESSION['logged_in']);
                 <h1>🔍 Advanced Product Search</h1>
                 <p>Find products with intelligent filtering and real-time search</p>
             </div>
-            <a href="/complete_manufacturing_demo_fixed.php" class="back-link">All Features</a>
+            <a href="/" class="back-link">Dashboard</a>
         </div>
     </div>
 

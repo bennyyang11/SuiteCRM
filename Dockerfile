@@ -46,8 +46,9 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html/
 
-# Set proper permissions
-RUN chown -R www-data:www-data /var/www/html \
+# Create necessary directories and set proper permissions
+RUN mkdir -p /var/www/html/tmp /var/www/html/cache /var/www/html/upload \
+    && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/cache \
     && chmod -R 775 /var/www/html/upload \
