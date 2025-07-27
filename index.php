@@ -487,13 +487,16 @@ ob_end_clean();
                     </div>
                     <div class="widget-content">
                         <div class="stock-indicators">
-                            <div class="indicator good">🟢 152 Products In Stock</div>
-                            <div class="indicator warning">🟡 12 Low Stock Items</div>
-                            <div class="indicator critical">🔴 3 Out of Stock</div>
+                            <div class="indicator good">🟢 Real-Time Stock Levels</div>
+                            <div class="indicator warning">🟡 Live Database Integration</div>
+                            <div class="indicator critical">🔴 Instant Purchase Updates</div>
                         </div>
                         <div class="urgent-items">
-                            <div class="urgent-item">Steel Pipe 2" - Only 5 left</div>
-                            <div class="urgent-item">Copper Fittings - Out of stock</div>
+                            <div class="urgent-item">Click "Check All" to see live inventory data</div>
+                            <div class="urgent-item">Or use "Purchase System" to make transactions</div>
+                        </div>
+                        <div style="margin-top: 15px; text-align: center;">
+                            <a href="/inventory_purchase_interface.php" class="btn btn-success btn-sm" style="background: #28a745; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">🛒 Purchase System</a>
                         </div>
                     </div>
                 </div>

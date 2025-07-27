@@ -6,43 +6,16 @@
 
 require_once('config.php');
 
-// Database connection - handle both local and Docker environments
+// Database connection
 global $sugar_config;
-
-// Try Docker connection first, then fall back to local
-$db = null;
-$connection_error = null;
-
-// Docker environment
-try {
-    $db = new mysqli(
-        'suitecrm-mysql',
-        $sugar_config['dbconfig']['db_user_name'],
-        $sugar_config['dbconfig']['db_password'],
-        $sugar_config['dbconfig']['db_name'],
-        3306
-    );
-    if ($db->connect_error) {
-        throw new Exception($db->connect_error);
-    }
-} catch (Exception $e) {
-    // Local environment fallback
-    try {
-        $host = str_replace(':3307', '', $sugar_config['dbconfig']['db_host_name']);
-        $db = new mysqli(
-            $host,
-            $sugar_config['dbconfig']['db_user_name'],
-            $sugar_config['dbconfig']['db_password'],
-            $sugar_config['dbconfig']['db_name'],
-            3307
-        );
-        if ($db->connect_error) {
-            throw new Exception($db->connect_error);
-        }
-    } catch (Exception $e2) {
-        $connection_error = "Cannot connect to database: Docker (" . $e->getMessage() . ") or Local (" . $e2->getMessage() . ")";
-    }
-}
+$host = str_replace(':3307', '', $sugar_config['dbconfig']['db_host_name']);
+$db = new mysqli(
+    $host,
+    $sugar_config['dbconfig']['db_user_name'],
+    $sugar_config['dbconfig']['db_password'],
+    $sugar_config['dbconfig']['db_name'],
+    3307
+);
 
 // Get real inventory data
 $inventory_data = [];
@@ -53,7 +26,7 @@ $summary_stats = [
     'out_of_stock_items' => 0
 ];
 
-if ($db && !$connection_error) {
+if (!$db->connect_error) {
     // Get inventory summary
     $summary_result = $db->query("
         SELECT 
@@ -69,34 +42,28 @@ if ($db && !$connection_error) {
         $summary_stats = $summary_result->fetch_assoc();
     }
     
-    // Get detailed inventory items - GROUP BY product to show totals across warehouses
+    // Get detailed inventory items
     $inventory_result = $db->query("
         SELECT 
-            p.id as product_id,
             p.name as product_name,
             p.sku,
             p.unit_price,
-            SUM(i.current_stock) as total_stock,
-            AVG(i.reorder_point) as avg_reorder_point,
-            COUNT(w.id) as warehouse_count,
-            GROUP_CONCAT(CONCAT(w.code, ':', i.current_stock) ORDER BY i.current_stock DESC SEPARATOR ', ') as warehouse_breakdown,
-            CASE 
-                WHEN SUM(i.current_stock) <= 0 THEN 'out_of_stock'
-                WHEN SUM(i.current_stock) <= AVG(i.reorder_point) THEN 'low_stock'
-                ELSE 'in_stock'
-            END as stock_status
+            i.current_stock,
+            i.reorder_point,
+            i.stock_status,
+            w.name as warehouse_name,
+            w.code as warehouse_code
         FROM mfg_inventory i
         JOIN mfg_products p ON i.product_id = p.id
         JOIN mfg_warehouses w ON i.warehouse_id = w.id
         WHERE i.deleted = 0 AND p.deleted = 0 AND w.deleted = 0
-        GROUP BY p.id, p.name, p.sku, p.unit_price
         ORDER BY 
-            CASE 
-                WHEN SUM(i.current_stock) <= 0 THEN 1 
-                WHEN SUM(i.current_stock) <= AVG(i.reorder_point) THEN 2 
+            CASE i.stock_status 
+                WHEN 'out_of_stock' THEN 1 
+                WHEN 'low_stock' THEN 2 
                 ELSE 3 
             END,
-            SUM(i.current_stock) ASC
+            i.current_stock ASC
         LIMIT 20
     ");
     
@@ -229,10 +196,10 @@ if ($db && !$connection_error) {
             <h2>📊 Live Stock Status Dashboard</h2>
             <p style="margin: 15px 0; color: #6c757d;">Real-time inventory levels pulled from the database. Showing items sorted by urgency (out of stock, low stock, then in stock).</p>
             
-            <?php if ($connection_error): ?>
+            <?php if ($db->connect_error): ?>
                 <div class="error-message">
-                    <strong>Database Connection Error:</strong> <?php echo htmlspecialchars($connection_error); ?>
-                    <br>Some features may be limited.
+                    <strong>Database Connection Error:</strong> Unable to connect to inventory database. 
+                    Using Docker environment - some features may be limited.
                 </div>
             <?php elseif (empty($inventory_data)): ?>
                 <div class="no-data">
@@ -241,7 +208,7 @@ if ($db && !$connection_error) {
             <?php else: ?>
                 <div class="inventory-grid" id="inventoryGrid">
                     <?php foreach ($inventory_data as $item): ?>
-                        <div class="inventory-widget" data-status="<?php echo $item['stock_status']; ?>" data-name="<?php echo strtolower($item['product_name']); ?>" data-product-id="<?php echo $item['product_id']; ?>">
+                        <div class="inventory-widget" data-status="<?php echo $item['stock_status']; ?>" data-name="<?php echo strtolower($item['product_name']); ?>">
                             <div class="inventory-header">
                                 <div class="inventory-title"><?php echo htmlspecialchars($item['product_name']); ?></div>
                                 <span class="stock-badge stock-<?php echo $item['stock_status']; ?>">
@@ -262,23 +229,22 @@ if ($db && !$connection_error) {
                                     echo $item['stock_status'] === 'out_of_stock' ? '#f8d7da' : 
                                         ($item['stock_status'] === 'low_stock' ? '#fff3cd' : '#d4edda'); 
                                 ?>;">
-                                    <div class="stock-number stock-display" data-product-id="<?php echo $item['product_id']; ?>" style="color: <?php 
+                                    <div class="stock-number" style="color: <?php 
                                         echo $item['stock_status'] === 'out_of_stock' ? '#721c24' : 
                                             ($item['stock_status'] === 'low_stock' ? '#856404' : '#155724'); 
-                                    ?>;"><?php echo number_format($item['total_stock']); ?></div>
+                                    ?>;"><?php echo number_format($item['current_stock']); ?></div>
                                     <div class="stock-text" style="color: <?php 
                                         echo $item['stock_status'] === 'out_of_stock' ? '#721c24' : 
                                             ($item['stock_status'] === 'low_stock' ? '#856404' : '#155724'); 
-                                    ?>;">Total Stock</div>
+                                    ?>;">Current Stock</div>
                                 </div>
                                 <div class="stock-detail" style="background: #e2e3e5;">
-                                    <div class="stock-number" style="color: #495057;"><?php echo $item['warehouse_count']; ?></div>
-                                    <div class="stock-text" style="color: #495057;">Warehouses</div>
+                                    <div class="stock-number" style="color: #495057;"><?php echo number_format($item['reorder_point']); ?></div>
+                                    <div class="stock-text" style="color: #495057;">Reorder Point</div>
                                 </div>
                             </div>
                             
-                            <p><strong>Warehouses:</strong> <?php echo htmlspecialchars($item['warehouse_breakdown']); ?></p>
-                            <p style="color: #6c757d; font-size: 0.9em; margin-top: 5px;">Avg Reorder Point: <?php echo round($item['avg_reorder_point']); ?> units</p>
+                            <p><strong>Warehouse:</strong> <?php echo htmlspecialchars($item['warehouse_name']); ?> (<?php echo htmlspecialchars($item['warehouse_code']); ?>)</p>
                             
                             <p style="margin-top: 10px; font-weight: 500; color: <?php 
                                 echo $item['stock_status'] === 'out_of_stock' ? '#721c24' : 
@@ -288,7 +254,7 @@ if ($db && !$connection_error) {
                                     <?php if ($item['stock_status'] === 'out_of_stock'): ?>
                                         🚨 Critical: Immediate restock required
                                     <?php elseif ($item['stock_status'] === 'low_stock'): ?>
-                                        ⚠️ Action Required: Order <?php echo max(100, round($item['avg_reorder_point']) * 2); ?> units
+                                        ⚠️ Action Required: Order <?php echo max(100, $item['reorder_point'] * 2); ?> units
                                     <?php else: ?>
                                         ✅ Status: Well stocked, no action needed
                                     <?php endif; ?>
@@ -349,49 +315,8 @@ if ($db && !$connection_error) {
             window.location.reload();
         }
 
-        // Real-time inventory updates
-        let lastUpdate = Date.now();
-        
-        async function checkForUpdates() {
-            try {
-                const response = await fetch(`/inventory_purchase_api.php?action=get_products`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    // Update stock numbers in real-time
-                    data.data.products.forEach(product => {
-                        const stockDisplay = document.querySelector(`[data-product-id="${product.id}"] .stock-display`);
-                        if (stockDisplay) {
-                            const currentValue = parseInt(stockDisplay.textContent.replace(/,/g, ''));
-                            const newValue = product.total_stock;
-                            
-                            if (currentValue !== newValue) {
-                                // Animate the change
-                                stockDisplay.style.transition = 'all 0.5s ease';
-                                stockDisplay.style.transform = 'scale(1.2)';
-                                stockDisplay.style.color = '#007bff';
-                                
-                                setTimeout(() => {
-                                    stockDisplay.textContent = newValue.toLocaleString();
-                                    stockDisplay.style.transform = 'scale(1)';
-                                    stockDisplay.style.color = '';
-                                }, 250);
-                                
-                                console.log(`Updated ${product.name}: ${currentValue} → ${newValue}`);
-                            }
-                        }
-                    });
-                }
-            } catch (error) {
-                console.log('Update check failed:', error);
-            }
-        }
-
-        // Check for updates every 5 seconds
-        setInterval(checkForUpdates, 5000);
-
-        // Full refresh every 2 minutes
-        setInterval(refreshInventory, 120000);
+        // Auto-refresh every 30 seconds
+        setInterval(refreshInventory, 30000);
     </script>
 </body>
 </html>
